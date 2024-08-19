@@ -1,0 +1,71 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.nav-title {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.button-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.image-caption {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.main-title {
+  font-size: 35px;
+  font-weight: 700;
+}
+.main-sub-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.subheader-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.subtitleheader-text {
+  font-size: 17px;
+  font-weight: 550;
+}
+
+.body-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.project-card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.exp-card-text {
+  text-overflow: ellipsis;
+  max-width: calc(100% ); /* Ensure text container doesn't overlap with the image */
+  word-wrap: break-word; 
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.project-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.project-subtitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  
+}

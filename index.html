@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+    <!-- 
+      TODO
+
+      Upload your Unemployable (or whatever photo you like) to the assets/images folder
+      and change the name of the image below to match the uploaded one
+
+      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+
+      This should be the same across all pages.
+     -->
+    <link rel="icon" href="./assets/images/1311.png" />
+		<title>Seonghyun's Portfolio</title>
+    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/typography.css">
+    <link rel="stylesheet" href="./css/utilities.css">
+
+		<script defer src="./js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="./index.html">
+        <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+        <span class="nav-title">@seonghyunpark</span>
+         <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
+        <a class="button" href="mailto:spark6015@berkeley.edu">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PORTFOLIO HEADER -->
+      <div id="portfolio-header">
+        <div id="portfolio-header-image-container">
+          <!-- 
+            TODO
+
+            - Change the img "src" attribute to point to the Unemployable image you uploaded (or whatever image).
+            - Change the number to point to your Unemployable & replace the OpenSea link with your own
+            - If you aren't using an Unemployable as your image, remove the entire "a" element
+          -->
+          <img src="./assets/images/portrait.png" class="portfolio-header-image">
+          <!-- <a class="no-underline" target="_blank" href="https://opensea.io/assets/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/1311">
+            <span class="image-caption">Unemployables #1311</span>
+          </a> -->
+        </div>
+
+          <!-- 
+            TODO
+
+            - Change the main-title to whatver you want
+            - Change the body-text after that to a quick introduction to what you do
+            - Edit the button text if you feel like it. It will link to the projects section below.
+          -->
+        <div id="portfolio-header-text-container">
+            <div class="header-text">
+              <span class="main-title">Hi, I'm Seonghyun!</span> <br>
+              <span class="main-sub-title">Computer Science @ UC Berkeley</span>
+              
+              <div class="body-text">
+                <br>
+                My name is <strong>Seonghyun Park</strong>, a <strong>Computer Science Undergraduate</strong> at the University of California, Berkeley. 
+              </div>
+            </div>
+            <a class="button" href="#industry-experience-section" id="my-work-link">
+              <span class="button-text">Industry Experiences</span> 
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+            <a class="button" href="#industry-experience-section" id="my-research-link">
+              <span class="button-text">Research Experiences</span> 
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+            <a class="button" href="#industry-experience-section" id="my-project-link">
+              <span class="button-text">Projects</span> 
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+            <a class="button" id="my-work-link" href="./resume.html">
+              <span class="button-text">Resume</span> 
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+        </div>
+      </div>
+
+      <!-- ABOUT SECTION -->
+      <!-- 
+        TODO
+
+        - Change the subheader-text to whatever header you want
+        - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
+      -->
+      <div id="about-section">
+        <span class="subheader-text">My Background / About Me</span>
+        <div class="about-section-content">
+          <div class="body-text">My background is in diverse in computer sceince such as engineering, mixed reality (MR) development, and research, with experience in leading projects and collaborating with cross-functional teams.</div>
+          
+        </div>
+      </div>
+
+      <div id="my-work-section">
+        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
+        <span class="subheader-text">Industry Experience</span>
+
+        <div class="exp-container">
+
+
+          <div class="exp-card">
+            <img src="./assets/images/snapchat.png" class="exp-image">
+            <div class="exp-card-text-container">
+              <div class="subheader-text project-title">Snap Inc.</div>
+              <div class="body-text exp-card-text">During my externship with Snap Inc., I collaborated closely with the AR development team to create an augmented reality (AR) lens using Snap's Lens Studio software. I conducted data-driven market analysis focusing on the entertainment, sports, and tech sectors to identify opportunities for impactful AR experiences. Additionally, I tested and optimized these AR experiences to ensure they performed optimally across various devices and platforms.</div>
+            </div>
+          </div>
+          <div class="exp-card">
+            <img src="./assets/images/os.png" class="exp-image">
+            <div class="exp-card-text-container">
+              <div class="subheader-text project-title">OrangeShine</div>
+              <div class="body-text exp-card-text">As a Software Engineering Intern at OrangeShine, I implemented prefetching and indexing strategies using Python and Django, which resulted in up to a 40% improvement in page response times for certain web pages and significantly reduced server load. I developed over five Django-based web applications, utilizing REST APIs for vendors to manage and edit shipment box sizes, with integrated data validation that captured user inputs and synchronized them with a cloud-based SQL database. Furthermore, I played a critical role in upgrading Python and Django across 10+ company applications, modifying existing codebases to align with the latest software versions, thereby enhancing security and performance.</div>
+            </div>
+          </div>
+          <div class="exp-card">
+            <img src="./assets/images/br.png" class="exp-image">
+            <div class="exp-card-text-container">
+              <div class="subheader-text project-title">Boram Cooperation</div>
+              <div class="body-text exp-card-text">In my role as a Software Engineering Intern at Boram Cooperation, I implemented and developed a responsive design framework using Bootstrap, which optimized cross-platform compatibility and performance across desktop, mobile, and tablet devices. This work significantly enhanced user accessibility and interaction. The improvements led to a 25% increase in user satisfaction based on internal reviews, and the revamped website was well-received by staff, ultimately boosting the company’s online presence and accessibility.</div>
+            </div>
+          </div>
+  
+          
+        </div>
+      </div>
+
+      <div id="my-research-section">
+        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
+        <span class="subheader-text">Research Experience</span>
+
+        <div class="exp-container">
+
+
+          <div class="exp-card">
+            <img src="./assets/images/vrlab.png" class="exp-image">
+            <div class="exp-card-text-container">
+              <div class="subheader-text project-title">EECS DOP at UC Berkeley</div>
+              <div class="subtitleheader-text project-title">Advised by Prof. Sanjit Seshia, Postdoc Edward Kim</div>
+              <div class="body-text exp-card-text">I am currently leading one of the group in a research project at the EECS DOP at UC Berkeley, focusing on home-based Mixed Reality Stroke Rehabilitation in collaboration with UCSF and Stanford. In my role, I lead a team of 8 undergraduates to develop a comprehensive MR stroke rehabilitation application for Meta Quest 3. I have implemented several key features, including the creation of training scenarios, recording trajectory points, processing data with Dynamic Time Warping (DTW), and building a network pipeline using ZMQ to transmit patient data and task information to a server. Additionally, I designed and implemented personalized algorithms tailored to patients' range of motion, creating progressively challenging tasks that adapt as patients improve. My work is grounded in thorough literature reviews, ensuring innovation and avoiding redundancy throughout the development process.</div>
+            </div>
+          </div>
+          <div class="exp-card">
+            <img src="./assets/images/lab.png" class="exp-image">
+            <div class="exp-card-text-container">
+              <div class="subheader-text project-title">Berkeley Lab (LBNL)</div>
+              <div class="subtitleheader-text project-title">Advised by Dr. Waqas Khalid</div>
+              <div class="body-text exp-card-text">During my time as an Undergraduate Research Assistant at Lawrence Berkeley National Laboratory, I played a pivotal role in designing an e-beam lithography system using nanotubes, with a focus on cost-effective solutions and improved efficiency. I advanced the development of a lithography simulator by incorporating pathfinding algorithms that increased operational speed by 30%. Additionally, I was involved in testing and evaluating the performance of shooting electrons through nanotubes, utilizing a motor capable of micrometer precision. This fine-tuning of the motor's positioning significantly enhanced the accuracy of the process.</div>
+            </div>
+          </div>
+          
+  
+          
+        </div>
+      </div>
+      <!-- PROJECTS / MY WORK SECTION -->
+      <div id="my-project-section">
+        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
+        <span class="subheader-text">Projects</span>
+
+        <div class="projects-container">
+          <!-- 
+            TODO
+
+            This is where the project cards live. Here's a base level project card for you to copy:
+            <div class="project-card">
+              <img src="./assets/images/IMAGE_NAME" class="project-image">
+              <div class="project-card-text-container">
+                <div class="subheader-text project-title">PROJECT_NAME</div>
+                <div class="body-text project-card-text">SMALL_PROJECT_DESCRIPTION</div>
+              </div>
+              <a class="button" href="./project-pages/PROJECT_PAGE_NAME.html">
+                <span class="button-text">Read More</span>
+                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+              </a>
+            </div>
+
+            - To add a project to the this area, copy the above, paste it below this comment, and change the following:
+                - IMAGE_NAME: the name of the image file in assets/images
+                - PROJECT_NAME: the name of the project (keep it short, it only shows 1 line)
+                - SMALL_PROJECT_DESCRIPTION: a quick project description (max 4 lines)
+                - PROJECT_PAGE_NAME.html: the html filename for the project (must be in project-pages folder)
+          -->
+
+          <div class="project-card">
+            <img src="./assets/images/smokesim.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">Smoke Simulator</div>
+              <!-- <div class="body-text project-card-text">Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium</div> -->
+            </div>
+            <a class="button" href="./project-pages/project-template.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/images/BearQueue.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">BearQueue</div>
+            </div>
+            <a class="button" href="./project-pages/project-template.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/images/clothsim.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">Cloth Simulator</div>
+            </div>
+            <a class="button" href="./project-pages/project-template.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+          <div class="project-card">
+            <img src="./assets/images/rasterizer.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">Rasterizer</div>
+            </div>
+            <a class="button" href="./project-pages/project-template.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+          <div class="project-card">
+            <img src="./assets/images/3d.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">3d Model Renderer</div>
+            </div>
+            <a class="button" href="./project-pages/project-template.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+          
+
+          <div class="project-card">
+            <img src="./assets/images/ray.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">3D Light Renderer</div>
+            </div>
+            <a class="button" href="./project-pages/project-template.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/images/antbee.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">Ants vs Bees</div>
+            </div>
+            <a class="button" href="./project-pages/project-template.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://www.instagram.com/matthew__park/">
+        <image src="./assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/seonghyun-park-704957237/">
+        <image src="./assets/icons/linkedin-app-icon.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://github.com/spark0615">
+        <image src="./assets/icons/icons8-github.svg" class="footer-icon"/>
+      </a>
+      <a class="icon-link" href="mailto:spark6015@berkeley.edu">
+        <image src="./assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
