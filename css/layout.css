@@ -260,6 +260,8 @@ body {
   .project-card {
     max-width: calc((100% - 16px) / 2);
   }
+
+  
 }
 
 /* Small devices (portrait tablets and large phones, 600px and below) */

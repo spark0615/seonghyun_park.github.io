@@ -69,3 +69,41 @@ body {
   -webkit-box-orient: vertical;
   
 }
+
+/* Extra Extra large devices (large laptops and desktops, 1200px and below) */
+@media only screen and (max-width: 1600px) {
+  #main-content {
+    margin: 225px 175px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and below) */
+@media only screen and (max-width: 1200px) {
+  #main-content {
+    margin: 225px 75px;
+  }
+}
+
+/* Large devices (laptops/desktops, 1000px and below) */
+@media only screen and (max-width: 1000px) {
+  .project-title {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 800px and below) */
+@media only screen and (max-width: 800px) {
+  .project-title {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and below) */
+@media only screen and (max-width: 600px) {
+  .project-title {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+}
