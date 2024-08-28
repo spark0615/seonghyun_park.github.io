@@ -21,7 +21,7 @@ body {
 /* Main Page Layout */
 
 #main-content {
-  margin: 225px 425px;
+  margin: 150px 125px;
   display: flex;
   flex-direction: column;
   gap: 96px;
@@ -46,7 +46,7 @@ body {
 }
 
 .portfolio-header-image {
-  width: 100%;
+  width: 70%;
   height: auto;
 }
 
@@ -74,7 +74,19 @@ body {
   gap: 34px;
 }
 
-
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+.pdf-container {
+  text-align: center;
+}
+.pdf-container iframe {
+  width: 80%;
+  height: 1500px;
+  padding-top: 80px;
+  border: none;
+}
 
 
 /* Project Section */
@@ -82,8 +94,20 @@ body {
 #my-work-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
+
+#my-research-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#my-project-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 
 .projects-container {
   display: flex;
@@ -113,7 +137,37 @@ body {
       object-position: center;
     }
 
-
+    /* Project Cards */
+    .exp-container {
+      display: flex;
+      gap: 34px 16px;
+      flex-wrap: wrap;
+    }
+    
+    .exp-card {
+      display: flex;
+      flex-direction: row; /* Change from column to row */
+      gap: 40px; /* Adjust gap between image and text */
+      width: 100%; /* Make sure the card takes up the full width */
+      
+      margin-bottom: 16px
+    }
+    
+    .exp-image {
+      width: 200px; /* Fixed width for the image */
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .exp-card-text-container {
+      flex-grow: 1; /* Allow the text container to take up remaining space */
+      display: flex;
+      flex-direction: column;
+      
+      /* word-wrap: break-word; */
+      gap: 10px;
+    }
 
 
 /* Project Pages */
@@ -175,28 +229,28 @@ body {
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
   #main-content {
-    margin: 225px 275px;
+    margin: 225px 175px;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1200px) {
   #main-content {
-    margin: 225px 175px;
+    margin: 225px 75px;
   }
 }
 
 /* Large devices (laptops/desktops, 1000px and below) */
 @media only screen and (max-width: 1000px) {
   #main-content {
-    margin: 225px 75px;
+    margin: 225px 35px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 800px and below) */
 @media only screen and (max-width: 800px) {
   #main-content {
-    margin: 150px 50px;
+    margin: 150px 30px;
   }
 
   #portfolio-header {
