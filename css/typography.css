@@ -31,9 +31,29 @@ body {
   font-weight: 700;
 }
 
+.subsubheader-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .subtitleheader-text {
   font-size: 17px;
   font-weight: 550;
+}
+
+.math-equation {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.center-body-text{
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.center-text {
+  text-align: center;
 }
 
 .body-text {

@@ -179,8 +179,28 @@ body {
 }
 
 .project-header-image {
-  width: 100%;
+  width: 80%;
   height: auto;
+  margin: 0 auto;
+}
+
+.image-row {
+  display: flex; /* Enables flexbox */
+  justify-content: space-between;
+}
+.image-row img {
+  
+  height: auto; /* Maintains aspect ratio */
+}
+.one-project-image {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+}
+  
+
+#project-sub-text {
+  font: 20pt;
 }
 
 #project-details {
@@ -217,9 +237,19 @@ body {
     }
 
     .gallery-image-container.half-width {
-      width: calc((100% - 16px) / 2);
+      width: calc((100% - 16px) / 2.5);
+      margin: 0 auto;
     }
 
+    .gallery-image-container.one-third-width {
+      width: calc((100% - 16px) / 3.1);
+      margin: 0 auto;
+    }
+
+    .gallery-image-container.quarter-width {
+      width: calc((100% - 16px) / 4.2);
+      margin: 0 auto;
+    }
     .gallery-image {
       width: 100%;
       height: auto;
