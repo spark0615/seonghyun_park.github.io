@@ -70,8 +70,9 @@
         <image class="project-header-image" src="../assets/colorizing_result/Pyramid SSD Gradient Cropping melons.png">
           <div class="center-body-text"> melons.tif with automatic cropping, edge detection, SSD </div>
           <div class="subheader-text ">Overview</div> 
-        <div class="body-text">inspired by a famous past Russian chemist and photographer, Prokudin-Gorskii, main goal of the project is to align 3 Blue, Green, Red images into one so that we can get colorful one image.</div>
-
+          <div class="body-text">
+            Inspired by the work of the renowned Russian chemist and photographer, Sergey Prokudin-Gorskii, the main goal of this project is to align three separate images representing the Blue, Green, and Red color channels to create a single, cohesive color photograph. To achieve the best alignment, I used the Sum of Squared Differences (SSD) which helps minimize the pixel by pixel differences between the channels. Additionally, techniques such as automatic cropping and edge detection are also implemented to further enhancing alignment accuracy. These combined methods ensure that the final image is both sharp and well-aligned.
+          </div>
         
       </div>
 
@@ -107,13 +108,21 @@
             <a style="font-size: 10pt;" href="https://iipimage.sourceforge.io/documentation/images/">Source to the image</a>
           </div>
           
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping icon.png"></image>
+              <span class="image-caption center-text">icon.tif - rougly 3500^2 pixels SSD With Pyramid </span>
+            </div>
+      
+          </div>
+          
         </div>
         <hr style="width: 100%;">
         <div class="project-details-content">
           <div class="subheader-text">Bells & Whistles</div>
           <div class="body-text">With SSD by itself, it does a decent job of matching color channels; however, there is definitely room for improvement.</div>
           <div class="subheader-text">Automatic Cropping</div>
-          <div class="body-text">When matching one channel to another, borders may mislead the alignment. So, before running SSD on the pixels and applying pyramid algorithms, I applied gradients to each channel and analyzed the sums of the gradients to find significant areas of the image. I then cropped out areas with little to no significant content on each side. The process of determining how much to crop was based on the top and bottom of one channel, and the cropping was applied to all three channels.</div>
+          <div class="body-text">When matching one channel to another, borders may mislead the alignment. So, before running SSD on the pixels and applying pyramid algorithms, I applied gradients to each channel and analyzed the sums of the gradients to find significant areas of the image. I then cropped out areas with little to no significant content on each side. Also, I made sure that cropping does not crop more than 20% of each side to ensure mis detect the border and over crops the image. The process of determining how much to crop was based on the top and bottom of one channel, and the cropping was applied to all three channels.</div>
           
           <div class="project-gallery-content">
             <div class="gallery-image-container one-third-width">
@@ -180,7 +189,7 @@
           <div class="subheader-text">Final Result with SSD, Edge Detection, and Automatic Cropping</div>
           <div class="body-text">For the final result, I applied the features in this order:</div>
           <div class="body-text center-text">Automatic Cropping → Edge Detection → SSD</div>
-          <div class="body-text">By doing this, I was able to decrease the likelihood of detecting borders as edges, making the SSD score much more accurate.</div>
+          <div class="body-text">By doing this, I was able to decrease the likelihood of detecting borders as edges of images, making the SSD score much more accurate.</div>
 
           <div class="project-gallery-content">
             <div class="gallery-image-container quarter-width">
