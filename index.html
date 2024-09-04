@@ -174,6 +174,21 @@
         <span class="subheader-text">Projects</span>
 
         <div class="exp-container">
+          <div class="exp-card">
+            <img src="./assets/colorizing_result/Pyramid SSD Gradient Cropping melons.png" class="exp-image">
+            <div class="exp-card-text-container">
+              <div class="subheader-text project-title">Imaging Processing: Colorizing</div>
+              <div class="body-text exp-card-text">In this project, I worked on colorizing the Prokudin-Gorskii photo collection by aligning and combining three separate color channel images—Blue, Green, and Red—into a cohesive RGB photograph. My goal was to restore these historical images to their original form by achieving precise alignment.
+                To accomplish this, I used the Sum of Squared Differences (SSD) method to minimize pixel-by-pixel differences between the color channels, which allowed me to achieve accurate image alignment. I also implemented additional techniques such as automatic cropping and edge detection to further enhance the alignment process. The automatic cropping involved analyzing the gradient of each channel to identify and remove insignificant areas that could mislead alignment. For edge detection, I emphasized areas with high gradients, making it easier to detect and align edges accurately.
+                To optimize the search for the best alignment, I utilized a multi-scale pyramid approach. This technique involved progressively blurring and downsampling the image, reducing computational load and improving runtime, especially for large .TIF files.
+                By combining these methods—SSD, automatic cropping, and edge detection—I was able to achieve precise alignment and sharp colorization of the photographs. The final sequence of applying automatic cropping, followed by edge detection, and then SSD, minimized errors and produced a visually accurate result.</div>
+            </div>
+            <a class="button" href="./project-pages/colorize_project.html">
+              <span class="button-text">Project Details</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+          
 
           <div class="exp-card">
             <img src="./assets/images/vrgame.jpg" class="exp-image">
