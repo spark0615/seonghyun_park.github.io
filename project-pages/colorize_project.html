@@ -67,7 +67,7 @@
 
         <div class="main-title">Colorizing the Prokudin-Gorskii Photo Collection</div>
         
-        <image class="project-header-image" src="../assets/colorizing_result/Pyramid SSD Gradient Cropping melons.png">
+        <image class="project-header-image" src="../assets/colorizing_result/emir.png">
           <div class="center-body-text"> melons.tif with automatic cropping, edge detection, SSD </div>
           <div class="subheader-text ">Overview</div> 
           <div class="body-text">
@@ -80,9 +80,7 @@
       <div id="project-details">
         <div class="subheader-text">Project Details</div>
         <div class="project-details-content">
-          <div class="body-text">First thing that I had to decide is which math equatuins should i use to compute the best alignment between reference and target color channel. I had about 3 options that I could think of which are L2 Norm, Normalized Cross-Correlation (NCC), sum of squared differencess(SSD).
-            I decided to use SSD because it is computionally simple which made run time a bit faster than others. 
-          </div>
+          <div class="body-text">First, I had to decide which mathematical equations to use to compute the best alignment between the reference and target color channels. I considered three options: L2 Norm, Normalized Cross-Correlation (NCC), and Sum of Squared Differences (SSD). I decided to use SSD because it is computationally simple, which made the run time faster than the other options.</div>
           <div class="subsubheader-text">L2 Norm</div>
           <div class="math-equation center-text"> \( \sqrt{ \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 } \)</div>
           <div class="subsubheader-text">Normalized Cross-Correlation (NCC)</div>
