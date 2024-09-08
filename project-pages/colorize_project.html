@@ -68,10 +68,10 @@
         <div class="main-title">Colorizing the Prokudin-Gorskii Photo Collection</div>
         
         <image class="project-header-image" src="../assets/colorizing_result/Pyramid SSD Gradient Cropping emir.png" style="width:  50%;">
-          <div class="center-body-text"> melons.tif with automatic cropping, edge detection, SSD </div>
+          <div class="center-body-text">(R - (40, 107), G - (23, 49)) emir.tif with automatic cropping, edge detection, SSD </div>
           <div class="subheader-text ">Overview</div> 
           <div class="body-text">
-            Inspired by the work of the renowned Russian chemist and photographer, Sergey Prokudin-Gorskii, the main goal of this project is to align three separate images representing the Blue, Green, and Red color channels to create a single, cohesive color photograph. To achieve the best alignment, I used the Sum of Squared Differences (SSD) which helps minimize the pixel by pixel differences between the channels. Additionally, techniques such as automatic cropping and edge detection are also implemented to further enhancing alignment accuracy. These combined methods ensure that the final image is both sharp and well-aligned.
+            This project is inspired by the work of the Russian chemist and photographer, Sergey Prokudin-Gorskii. The main goal of this project is to align three separate images representing the Blue, Green, and Red color channels to create a single, cohesive color photograph. To achieve the best alignment, I used the Sum of Squared Differences (SSD) which helps minimize the pixel by pixel differences between the channels. Additionally, techniques such as automatic cropping and edge detection are also implemented to further enhancing alignment accuracy. These combined methods ensure that the final image is both sharp and well-aligned.
           </div>
         
       </div>
@@ -84,15 +84,29 @@
           <div class="subsubheader-text">L2 Norm</div>
           <div class="math-equation center-text"> \( \sqrt{ \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 } \)</div>
           <div class="subsubheader-text">Normalized Cross-Correlation (NCC)</div>
-          <div class="math-equation center-text"></div>$$\text{h}(f, g) = \frac{\sum_{x,y} (f(x, y) - \bar{f}) (g(x, y) - \bar{g})}{\sqrt{\sum_{x,y} (f(x, y) - \bar{f})^2 \sum_{x,y} (g(x, y) - \bar{g})^2}}$$</div>
+          <div class="math-equation center-text"></div>
+          
+          \[
+          \sum \left( \frac{\text{ref} - \mu_{\text{ref}}}{\sigma_{\text{ref}}} \cdot \frac{\text{val} - \mu_{\text{val}}}{\sigma_{\text{val}}} \right)
+          \]
+        </div>
           <div class="subsubheader-text">Sum of Squared differencess (SSD)</div>
           <div class="math-equation center-text">\( \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \)</div>
           
         
-          <div class="image-row">
-            <image class="one-project-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping cathedral.png"></image>
-            <image class="one-project-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping tobolsk.png"></image>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping monastery.png"></image>
+              <span class="image-caption center-text">(R - (1, 9), G - (0, -6)) SSD</span>
+            </div>
+
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping tobolsk.png"></image>
+              <span class="image-caption center-text">(R - (3, 6), G - (2, 3)) SSD</span>
+            </div>
+      
           </div>
+          
           <br>
           <div class="subheader-text">Searching for Best Alignment Implementation</div>
           <div class="body-text">I first implemented a naive method where I searched within the range [-15, 15] in both x and y directions to find the best alignment displacement. This approach worked for small images, like those in JPG format, but it took too long for .TIF files, as they were about 10 times larger than the JPG images.</div>
@@ -109,7 +123,7 @@
           <div class="project-gallery-content">
             <div class="gallery-image-container half-width">
               <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping icon.png"></image>
-              <span class="image-caption center-text">icon.tif - rougly 3500^2 pixels SSD With Pyramid </span>
+              <span class="image-caption center-text">(R - (22, 89), G - (16, 42)) icon.tif - rougly 3500^2 pixels SSD With Pyramid </span>
             </div>
       
           </div>
@@ -138,11 +152,11 @@
 
             <div class="gallery-image-container half-width">
               <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping lady.png"></image>
-              <span class="image-caption center-text">SDD Without Automatic Cropping</span>
+              <span class="image-caption center-text">(R - (-17, 123), G - (-6, 57)) SSD Without Automatic Cropping</span>
             </div>
             <div class="gallery-image-container half-width">
               <img src="../assets/colorizing_result/Pyramid SSD No gradient Cropping lady.png" class="gallery-image">
-              <span class="image-caption center-text">SDD With Automatic Cropping</span>
+              <span class="image-caption center-text">(R - (-5, 108), G - (0, 56)) SSD With Automatic Cropping</span>
             </div>
           </div>
           
@@ -171,11 +185,11 @@
 
             <div class="gallery-image-container half-width">
               <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD No gradient No Cropping harvesters.png"></image>
-              <span class="image-caption center-text">SSD With No Edge Detection</span>
+              <span class="image-caption center-text">(R - (7, 120), G - (-3, 118)) SSD With No Edge Detection</span>
             </div>
             <div class="gallery-image-container half-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient No Cropping harvesters.png" class="gallery-image">
-              <span class="image-caption center-text">SDD With Edge Detection</span>
+              <span class="image-caption center-text">(R - (3, 186), G - (-6, 71)) SSD With Edge Detection</span>
             </div>
           </div>
 
@@ -191,42 +205,54 @@
 
           <div class="project-gallery-content">
             <div class="gallery-image-container quarter-width">
-              <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD Gradient Cropping cathedral.png"></image>
+              <image class="gallery-image" src="../assets/colorizing_result/Pyramid SSD Gradient Cropping onion_church.png"></image>
+              <span class="image-caption center-text">(R - (36, 108), G - (25, 52))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping church.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (-5, 58), G - (-6, 25))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping harvesters.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (10, 124), G - (17, 60))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping three_generations.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (8, 111), G - (8, 52))</span>
             </div>
 
             <div class="gallery-image-container quarter-width">
               <image src="../assets/colorizing_result/Pyramid SSD Gradient Cropping icon.png" class="gallery-image" ></image>
+              <span class="image-caption center-text">(R - (23, 90), G - (17, 42))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping monastery.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (1, 3), G - (0, -3))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping sculpture.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (-26, 140), G - (-11, 33))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping train.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (29, 85), G - (-3, 41))</span>
             </div>
 
             <div class="gallery-image-container quarter-width">
               <image src="../assets/colorizing_result/Pyramid SSD Gradient Cropping lady.png" class="gallery-image" ></image>
+              <span class="image-caption center-text">(R - (-10, 121), G - (0, 57))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping tobolsk.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (3, 6), G - (2, 3))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping self_portrait.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (37, 176), G - (30, 79))</span>
             </div>
             <div class="gallery-image-container quarter-width">
               <img src="../assets/colorizing_result/Pyramid SSD Gradient Cropping melons.png" class="gallery-image">
+              <span class="image-caption center-text">(R - (12, 177), G - (7, 79))</span>
             </div>
           </div>
 
