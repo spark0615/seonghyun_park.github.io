@@ -1,0 +1,739 @@
+
+
+<!-- 
+  IMPORTANT! 
+  
+  Keep this file unchanged to use as a template for all future project pages. 
+
+  For every new project you add to your portfolio, make a copy of this file in the
+  'project-pages' folder with a name related to the project.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <!-- 
+      TODO
+
+      Upload your Unemployable (or whatever photo you like) to the assets/images folder
+      and change the name of the image below to match the uploaded one
+
+      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+
+      This should be the same across all pages.
+     -->
+     <link rel="icon" href="../assets/images/1311.png" />
+     <title>Unemployables Portfolio</title>
+    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <!-- 
+          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
+
+          (this should be the same across all pages)
+         -->
+        <span class="nav-title">Seonghyun Park</span>
+        <!-- 
+          TODO - Change the email after 'mailto:' to your email address for contact 
+        
+          (this should be the same across all pages)
+        -->
+        <a class="button" href="mailto:spark6015@berkeley.edu">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">Fun with Filters and Frequencies</div>
+        
+        <image class="project-header-image" src="../assets/filter_freq_result/part2_2_orapple/appleorange_blend_4.png" style="width:  50%;">
+          <div class="center-body-text">Orange + Apple = Orapple</div>
+
+          <div class="subheader-text ">Overview</div> 
+          <div class="body-text">
+            This project will explore Gaussian filters through 2D convolution, the application of filters and frequency, and the use of Gaussian and Laplacian stacks.
+          </div>
+        
+      </div>
+
+      <hr style="width: 100%;">
+      <div id="project-details">
+        <div class="subheader-text">Finite Difference Operator</div>
+        <div class="project-details-content">
+          <div class="body-text">In this seciton, objective is to apply partial derivative of X and Y serpately so Using Dx Dy we can get edges in vertical and horizontal.
+          <p>\( D_x \): $$ D_x = \begin{bmatrix} 1 & -1 \end{bmatrix} $$</p>
+          <p>\( D_y \): $$ D_y = \begin{bmatrix} 1 \\ -1 \end{bmatrix} $$</p>
+          <p>The image is convolved with \( D_x \) and \( D_y \) where \( A \) is an image:
+            $$ A_x =  A * D_x$$ $$A_y = A * D_y $$
+          </p>
+          </div>
+            
+        </div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/partialX.png"></image>
+              <span class="image-caption center-text">Convolved with Dx</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/cameraman.png"></image>
+                <span class="image-caption center-text">Original Image</span>
+              </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/partialY.png"></image>
+              <span class="image-caption center-text">Convolved with Dy</span>
+            </div>
+        </div>
+        <div class="body-text">To compute the gradient of these two, we simply take the square root of the sum of the squares of both images that were partially derived:
+            <p> $$ \text{G} = \sqrt{ A_x^2 + A_y^2} $$ </p>
+        </div>
+        <div class="body-text">Then, we can apply a threshold to each pixel for binarization to suppress noise.</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/grad_mag.png"></image>
+              <span class="image-caption center-text">Gradient Magnitude</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/binary0_22.png"></image>
+                <span class="image-caption center-text">Binarized with Threshhold = 0.22</span>
+            </div>
+        </div>
+
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Derivative of Gaussian (DoG) Filter</div>
+            
+        <div class="body-text">In previous image, we found that its a bit noise; therefore, we investigate smoothing the image by applying gaussian filter and convolution after wards and compare result with applying gaussian to Dx and Dy .
+            <p> $$ A_G = A * Gaussian $$ 
+                $$ A_{Gx} = A_G * Dx $$
+                $$ A_{Gy} = A_G * Dy $$
+            </p>
+        </div>
+
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/1_2gaussian_filtered.png"></image>
+              <span class="image-caption center-text">Gaussian Filtered Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2gaussian_p_x.png"></image>
+                <span class="image-caption center-text">\(A * Gaussian * Dx\)</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2gaussian_p_y.png"></image>
+                <span class="image-caption center-text">\(A * Gaussian * Dx\)</span>
+            </div>
+        </div>
+        <div class="body-text">Then compute the gradient magitude of these two.
+            <p> $$ G_a = \sqrt{ A_{Gx}^2 + A_{Gy}^2} $$ </p>
+        </div>
+        
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2gaussian_grad_mag.png"></image>
+                <span class="image-caption center-text">Gradient Magnitude</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2gaussian_binary.png"></image>
+                <span class="image-caption center-text">Binarized with Threshhold = 0.1</span>
+            </div>
+        </div>
+        
+        <div class="body-text">From the result, it is clear that the edges are more connected and visibly sharper. The Gaussian filter effectively reduced noise by smoothing out variations in pixel intensity.</div>
+        <br>
+        <div class="body-text">Now, we are going to produce another result by applying derivate to gaussian. By Associative Property of Multiplication it should output the same result.
+            <p> $$ D_{xG} = D_x * Gaussian $$ </p>
+            <p> $$ D_{yG} = D_y * Gaussian $$ </p>
+            <p> $$ A_{xG} = A * D_{xG} $$ </p>
+            <p> $$ A_{yG} = A * D_{yG} $$ </p>
+            <p> $$ G_a = \sqrt{ A_{xG}^2 + A_{yG}^2} $$ </p>
+        </div>
+
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/1_2dog_x.png"></image>
+              <span class="image-caption center-text">\(D_x * Gaussian\)</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2dog_y.png"></image>
+                <span class="image-caption center-text">\(D_y * Gaussian\)</span>
+            </div>
+        
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/1_2dog_p_x.png"></image>
+              <span class="image-caption center-text">\(A * (D_x * Gaussian)\)</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2dog_p_y.png"></image>
+                <span class="image-caption center-text">\(A * (D_y * Gaussian)\)</span>
+            </div>
+        </div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/1_2dog_grad_mag.png"></image>
+              <span class="image-caption center-text">Gradient Magnitude</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2dog_binary.png"></image>
+                <span class="image-caption center-text">Binarized with Threshhold = 0.1</span>
+            </div>
+        </div>
+        
+        <div class="body-text" style="text-align: center; font-size: 20pt;"> Comparison </div>
+        <div class="body-text"> Besides very small differencese in some pixsles, the binarized results approaches are identical.</div>
+
+        
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/1_2gaussian_binary.png"></image>
+              <span class="image-caption center-text">Gaussian Filtered Finite Difference</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/1_2dog_binary.png"></image>
+                <span class="image-caption center-text">Derivative of Gaussian</span>
+            </div>
+        </div>
+        
+        
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Image Sharpening</div>
+            
+        <div class="body-text">In sharpening image, we explore the process of sharpening using the unsharp masking technique. Unsharp masking method helps enhancing the edges and details in an iamge by intensifies the high frequency pixels</div>
+        <div class="body-text">To create unsharp masking and sharpen the image, I first need to separate the color channels. Then, I apply Gaussian filters to each one of them. After applying the filters, I subtract the blurred image from the original image to obtain the edges. For the final result, I add the edges multiplied by an intensity factor to the original image to produce the sharpened image.</div>
+        <div class="subsubheader-text">Taj Mahal</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/taj.png"></image>
+              <span class="image-caption center-text">Orignal Image</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/blurred_taj.png"></image>
+                <span class="image-caption center-text">Blurred Image</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/edge_taj.png"></image>
+                <span class="image-caption center-text">High Frequencies of the Image </span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                  <image class="gallery-image" src="../assets/filter_freq_result/sharpened_taj.png"></image>
+                  <span class="image-caption center-text">Sharpened Image with intensity of 1.5</span>
+              </div>
+        </div>
+        <div class="subsubheader-text">Pictures</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/pictures.png"></image>
+              <span class="image-caption center-text">Orignal Image</span>
+            </div>
+            <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/blurred_pictures.png"></image>
+                <span class="image-caption center-text">Blurred Image</span>
+            </div>
+            <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/edge_pictures.png"></image>
+                <span class="image-caption center-text">High Frequencies of the Image </span>
+              </div>
+              <div class="gallery-image-container half-width">
+                  <image class="gallery-image" src="../assets/filter_freq_result/sharpened_pictures.png"></image>
+                  <span class="image-caption center-text">Sharpened Image with intensity of 1.5</span>
+              </div>
+        </div>
+        <div class="subsubheader-text">Headset in the River</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/headwater.png"></image>
+              <span class="image-caption center-text">Orignal Image</span>
+            </div>
+            <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/blurred_headwater.png"></image>
+                <span class="image-caption center-text">Blurred Image</span>
+            </div>
+            <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/edge_headwater.png"></image>
+                <span class="image-caption center-text">High Frequencies of the Image </span>
+              </div>
+              <div class="gallery-image-container half-width">
+                  <image class="gallery-image" src="../assets/filter_freq_result/sharpened_headwater.png"></image>
+                  <span class="image-caption center-text">Sharpened Image with intensity of 1.5</span>
+              </div>
+        </div>
+
+        <div class="body-text">By experimenting with the "Pictures" and "Headset in the River" images, I observed that the blurred image has softened edges and reduced the clarity of fine details. However, after sharpening, the edges are almost exactly the same as the original image, with slight noise introduced in the smooth regions.</div>
+
+
+
+        
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Hybrid Images</div>
+        <div class="body-text">A hybrid image is an image where two different images are combined into one. I generate the low-pass image using a Gaussian filter, and the high-pass image by subtracting the low-pass filtered image from the original image. This method creates an optical illusion: when viewed up close, the high-frequency image (with sharp details) is more prominent, but as you move further away, the low-pass filtered image (with smooth, broad features) becomes more noticeable.</div>
+
+        <div class="subsubheader-text">Derek and Nutmeg</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/DerekPicture.jpg"></image>
+              <span class="image-caption center-text">Low Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/nutmeg.jpg"></image>
+                <span class="image-caption center-text">High Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/hybrid_DerekPicturenutmeg.png"></image>
+                <span class="image-caption center-text">Hybrid Image</span>
+            </div>
+        </div>
+        
+        <div class="subsubheader-text">Cat and Mongoose</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/monk.jpg"></image>
+              <span class="image-caption center-text">Low Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/cat.jpg"></image>
+                <span class="image-caption center-text">High Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/hybrid_monkcat.png"></image>
+                <span class="image-caption center-text">Hybrid Image</span>
+            </div>
+        </div>
+
+
+        <div class="subsubheader-text">Smile and Frown (Favorite)</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/smile.png"></image>
+              <span class="image-caption center-text">Low Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/frown.png"></image>
+                <span class="image-caption center-text">High Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/hybrid_smilefrown.png"></image>
+                <span class="image-caption center-text">Hybrid Image</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Frequency Analysis</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/FFT_smile.png"></image>
+              <span class="image-caption center-text">Frequency of Smile FFT</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/low_FFT_smile.png"></image>
+                <span class="image-caption center-text">Low Frequency of Smile FFT</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/FFT_frown.png"></image>
+                <span class="image-caption center-text">Frequency of Frown FFT</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/high_FFTfrown.png"></image>
+                <span class="image-caption center-text">High Frequency of Frown FFT</span>
+            </div>
+            <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/hybrid_FFTsmilefrown.png"></image>
+                <span class="image-caption center-text">High Frequency of Frown FFT</span>
+            </div>
+        </div>
+        
+
+        <div class="subsubheader-text">Cat and Mongoose (Failure)</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/animalmouse.jpg"></image>
+              <span class="image-caption center-text">Low Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/mouse.png"></image>
+                <span class="image-caption center-text">High Frequency Image</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/hybrid_animalmousemouse.png"></image>
+                <span class="image-caption center-text">Hybrid Image</span>
+            </div>
+        </div>
+
+        <div class="body-text">For this particular hybrid image, it was very difficult to align the two images because they were different, a mouse as the object and an animal. Additionally, using a high sigma for the high-frequency filter resulted in the mouse's edges being too visible.</div>
+        
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Gaussian and Laplacian Stacks</div>
+        <div class="subsubheader-text">Gaussian stack</div>
+        <div class="body-text">A Gaussian stack is a series of images where each image is progressively blurred by repeatedly applying a Gaussian filter. Each level of the stack represents a smoother version of the original image.</div>
+        <div class="subsubheader-text">Laplacian stack</div>
+        <div class="body-text">The Laplacian stack is generated by subtracting consecutive levels of the Gaussian stack, specifically using the formula:\(L[i] = G[i] - G[i - 1] \) .</div>
+        <div class="body-text">After getting Gaussian stack and Laplacian stack, we blend them by using this:
+            <p> $$ blend_{i} = L_{left,i} * mask + L_{right, i} * (1 - mask) $$ </p>
+        </div>
+
+        <div class="subsubheader-text">Gaussian stack of Apple</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_gaussian_0.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_gaussian_1.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_gaussian_2.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_gaussian_3.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_gaussian_4.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 4</span>
+            </div>
+        </div>
+        <div class="subsubheader-text">Laplacian stack of Apple</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_laplacian_0.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_laplacian_1.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_laplacian_2.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_laplacian_3.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_laplacian_4.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 4</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Laplacian stack of masked Apple</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_mask_0.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_mask_1.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_mask_2.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_mask_3.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_mask_4.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 4</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Gaussian stack of Orange</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_gaussian_0.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_gaussian_1.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_gaussian_2.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_gaussian_3.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_gaussian_4.png"></image>
+              <span class="image-caption center-text">Gaussian stack Level 4</span>
+            </div>
+        </div>
+        <div class="subsubheader-text">Laplacian stack of Orange</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_laplacian_0.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_laplacian_1.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_laplacian_2.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_laplacian_3.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_laplacian_4.png"></image>
+              <span class="image-caption center-text">Laplacian stack Level 4</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Laplacian stack of masked Orange</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_mask_0.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_mask_1.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_mask_2.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_mask_3.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_mask_4.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 4</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Blended Apple and Orange</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/appleorange_blend_0.png"></image>
+              <span class="image-caption center-text">Blend Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/appleorange_blend_1.png"></image>
+              <span class="image-caption center-text">Blend Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/appleorange_blend_2.png"></image>
+              <span class="image-caption center-text">Blend Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/appleorange_blend_3.png"></image>
+              <span class="image-caption center-text">Blend Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/appleorange_blend_4.png"></image>
+              <span class="image-caption center-text">Blend Level 4</span>
+            </div>
+        </div>
+
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Multiresolution Blending</div>
+        <div class="subsubheader-text">Straberry gummy bear + Orange gummy bear = Strange gummy bear</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/catgummy.jpeg"></image>
+              <span class="image-caption center-text">Straberry Gummy Bear</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/catgummyorange.jpeg"></image>
+              <span class="image-caption center-text">Orange Gummy Bear</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/catgummycatgummyorange_mask_gaussian_0.png"></image>
+                <span class="image-caption center-text">Mask</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/catgummycatgummyorange_blend_4.png"></image>
+              <span class="image-caption center-text">Strange Gummy Bear</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Apple + Orange = Orapple</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/apple_gaussian_0.png"></image>
+              <span class="image-caption center-text">Apple</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/orange_gaussian_0.png"></image>
+              <span class="image-caption center-text">Orange</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/appleorange_mask_gaussian_0.png"></image>
+                <span class="image-caption center-text">Mask</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/appleorange_blend_4.png"></image>
+              <span class="image-caption center-text">Orapple</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Zebra + Oreo = Zereo</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraa.jpg"></image>
+              <span class="image-caption center-text">Zebra</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/oreoo.jpg"></image>
+              <span class="image-caption center-text">Oreo</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/filter_freq_result/zebraaoreoo_mask_gaussian_0.png"></image>
+                <span class="image-caption center-text">Mask</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraaoreoo_blend_4.png"></image>
+              <span class="image-caption center-text">Zereo</span>
+            </div>
+        </div>
+
+        
+        <div class="subsubheader-text">Masked Laplacian stack of Zebra</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraa_mask_0.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraa_mask_1.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraa_mask_2.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraa_mask_3.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraa_mask_4.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 4</span>
+            </div>
+        </div>
+        <div class="subsubheader-text">Blend of Zebra and Oreo</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraaoreoo_blend_0.png"></image>
+              <span class="image-caption center-text">Blend Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraaoreoo_blend_1.png"></image>
+              <span class="image-caption center-text">Blend Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraaoreoo_blend_2.png"></image>
+              <span class="image-caption center-text">Blend Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraaoreoo_blend_3.png"></image>
+              <span class="image-caption center-text">Blend Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/zebraaoreoo_blend_4.png"></image>
+              <span class="image-caption center-text">Blend Level 4</span>
+            </div>
+        </div>
+
+        <div class="subsubheader-text">Masked Laplacian of masked Oreo</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/oreoo_mask_0.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 0</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/oreoo_mask_1.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/oreoo_mask_2.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/oreoo_mask_3.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/filter_freq_result/oreoo_mask_4.png"></image>
+              <span class="image-caption center-text">Masked Laplacian stack Level 4</span>
+            </div>
+        </div>
+
+        <div class="subheader-text">Reflection</div>
+        <div class="body-text">
+            I really enjoyed doing this project. It was interesting to see how Gaussians are actually used in different applications. I learned a lot, and it opened my mind to the possibilities of what I can do with such mathematical equations.
+        </div>
+
+        <hr style="width: 100%;">
+        <div class="subheader-text">Acknowledgment</div>
+        <div class="body-text">
+          I used the <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template">Unemployables Portfolio Template</a> for this website.
+        </div>
+      </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/twitter.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:whitevans.eth@gmail.com">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
