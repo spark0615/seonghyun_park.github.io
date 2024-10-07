@@ -168,32 +168,72 @@
           
         </div>
       </div>
+
+
+
       <!-- PROJECTS / MY WORK SECTION -->
       <div id="my-project-section">
         <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
         <span class="subheader-text">Projects</span>
+        <div class="exp-card">
+          
+          <img alt="My GIF" id="me_ran" src="./assets/face_morph_result/part3me_ran_sequence.gif" class="exp-image">
+          <div class="exp-card-text-container">
 
-        <div class="exp-container">
-          <div class="exp-card">
-            <img src="./assets/filter_freq_result/appleorange_blend_4.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Imaging Processing: Filters and Frequencies</div>
-              <div class="body-text exp-card-text">
-                or this project, I explored the use of Gaussian filters and frequency-based operations on images. The primary focus was applying 2D convolution and filters to manipulate images and visualize their effects. The project involved using Gaussian and Laplacian stacks to better understand how these filters operate across different frequency levels.
-The first part of the project was about applying finite difference operators to images. I used the partial derivatives in the x and y directions to extract edges. After computing the gradient magnitude from the convolved images, I applied thresholding to binarize the result, enhancing the visibility of the edges. To improve the quality of edge detection, I explored the Derivative of Gaussian (DoG) filter, which combined Gaussian smoothing with the finite difference operator, reducing noise while maintaining sharpness in the edges.
-Next, I explored image sharpening using the unsharp masking technique. This process involved enhancing the edges by subtracting the blurred image from the original and adding back an amplified version of the edges. The results showed improved clarity, especially around high-frequency details, such as sharp edges in the images.
-I also experimented with hybrid images, where low-pass and high-pass images were combined to create optical illusions. For example, the combination of a low-pass filtered "smile" image and a high-pass filtered "frown" image created a hybrid image that changed its appearance based on the viewer’s distance.
-Lastly, I generated Gaussian and Laplacian stacks of different images, blending two distinct images, such as an apple and an orange, across different resolution levels to form a single, visually coherent "Orapple" image.
+      <script>
+        const gif = document.getElementById('me_ran');
+        gif.addEventListener('load', () => {
+            gif.style.visibility = 'visible'; 
+        });
 
-              </div>
+        
+        gif.addEventListener('animationiteration', () => {
+            resetGif(gif);
+        });
+
+        function resetGif(gifElement) {
+            const src = gifElement.src;
+            gifElement.src = '';  
+            gifElement.src = src;
+        }
+
+        setInterval(() => resetGif(gif), 5000); 
+    </script>
+            <div class="subheader-text project-title">Imaging Processing: Face Morphing</div>
+            <div class="body-text exp-card-text">
+              I created a face morphing sequence, computed the average face of a population, and generated a caricature of myself. The project began by defining key correspondences between two images: my face and a target face. Using a tool for manually selecting facial keypoints, I marked features like the eyes, nose, mouth, and chin on both images. These keypoints were then used to generate a Delaunay triangulation, ensuring consistent geometry for morphing. This triangulation was calculated at the midway shape between the two images to prevent deformation during the morph.
+Next, I computed the "mid-way face" by averaging the positions of the keypoints and warping both faces into this intermediate shape. Using affine transformations for each triangle, I mapped both images into the average geometry and averaged the colors, creating the mid-way face.
+For the morph sequence, I implemented a function that gradually transitions from my face to the target face across 45 frames. I controlled the shape warping with a warp_frac parameter and the color blending with a dissolve_frac parameter. This resulted in a smooth animation where each frame is a blend of both faces, culminating in a morph from my face to the target face.
+I also computed the average face of a population from a dataset, warping several faces into the average geometry. Additionally, I warped my face into the average face’s geometry and vice versa. Lastly, I created a caricature of myself by extrapolating from the average face, enhancing distinct features of my face. This project deepened my understanding of image processing, affine transformations, and facial geometry, and resulted in a visually compelling series of morphs and caricatures.
+
             </div>
-            <a class="button" href="./project-pages/filters_freq_project.html">
-              <span class="button-text">Project Details</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
+          <a class="button" href="./project-pages/morph_project.html">
+            <span class="button-text">Project Details</span>
+            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+          </a>
+        </div>
+        
+        <div class="exp-card">
+          <img src="./assets/filter_freq_result/appleorange_blend_4.png" class="exp-image">
+          <div class="exp-card-text-container">
+            <div class="subheader-text project-title">Imaging Processing: Filters and Frequencies</div>
+            <div class="body-text exp-card-text">
+              For this project, I explored the use of Gaussian filters and frequency-based operations on images. The primary focus was applying 2D convolution and filters to manipulate images and visualize their effects. The project involved using Gaussian and Laplacian stacks to better understand how these filters operate across different frequency levels.
+  The first part of the project was about applying finite difference operators to images. I used the partial derivatives in the x and y directions to extract edges. After computing the gradient magnitude from the convolved images, I applied thresholding to binarize the result, enhancing the visibility of the edges. To improve the quality of edge detection, I explored the Derivative of Gaussian (DoG) filter, which combined Gaussian smoothing with the finite difference operator, reducing noise while maintaining sharpness in the edges.
+  Next, I explored image sharpening using the unsharp masking technique. This process involved enhancing the edges by subtracting the blurred image from the original and adding back an amplified version of the edges. The results showed improved clarity, especially around high-frequency details, such as sharp edges in the images.
+  I also experimented with hybrid images, where low-pass and high-pass images were combined to create optical illusions. For example, the combination of a low-pass filtered "smile" image and a high-pass filtered "frown" image created a hybrid image that changed its appearance based on the viewer’s distance.
+  Lastly, I generated Gaussian and Laplacian stacks of different images, blending two distinct images, such as an apple and an orange, across different resolution levels to form a single, visually coherent "Orapple" image.
 
-        <div class="exp-container">
+            </div>
+          </div>
+          <a class="button" href="./project-pages/filters_freq_project.html">
+            <span class="button-text">Project Details</span>
+            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+          </a>
+        </div>
+
+        
           <div class="exp-card">
             <img src="./assets/colorizing_result/Pyramid SSD Gradient Cropping emir.png" class="exp-image">
             <div class="exp-card-text-container">

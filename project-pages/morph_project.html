@@ -1,0 +1,365 @@
+
+
+<!-- 
+  IMPORTANT! 
+  
+  Keep this file unchanged to use as a template for all future project pages. 
+
+  For every new project you add to your portfolio, make a copy of this file in the
+  'project-pages' folder with a name related to the project.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <!-- 
+      TODO
+
+      Upload your Unemployable (or whatever photo you like) to the assets/images folder
+      and change the name of the image below to match the uploaded one
+
+      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+
+      This should be the same across all pages.
+     -->
+     <link rel="icon" href="../assets/images/1311.png" />
+     <title>Unemployables Portfolio</title>
+    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <!-- 
+          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
+
+          (this should be the same across all pages)
+         -->
+        <span class="nav-title">Seonghyun Park</span>
+        <!-- 
+          TODO - Change the email after 'mailto:' to your email address for contact 
+        
+          (this should be the same across all pages)
+        -->
+        <a class="button" href="mailto:spark6015@berkeley.edu">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">Face Morphing</div>
+        
+        
+            <img class="project-header-image" id="me_ran" src="../assets/face_morph_result/part3me_ran_sequence.gif" alt="My GIF" style="width:  50%;">
+
+            <script>
+                const gif = document.getElementById('me_ran');
+                gif.addEventListener('load', () => {
+                    gif.style.visibility = 'visible'; 
+                });
+        
+                
+                gif.addEventListener('animationiteration', () => {
+                    resetGif(gif);
+                });
+        
+                function resetGif(gifElement) {
+                    const src = gifElement.src;
+                    gifElement.src = '';  
+                    gifElement.src = src;
+                }
+        
+                setInterval(() => resetGif(gif), 5000); 
+            </script>
+        
+          <div class="subheader-text ">Overview</div> 
+          <div class="body-text">
+            In this project, I will produce a morph animation with my face into someone else's. To compute morphing, I needed to first find way to get points in each features and warp to target image. I used inverse affine matrix transform and Delaunay triangulation to effectively apply morphing from one to another.
+          </div>
+        
+      </div>
+
+      <hr style="width: 100%;">
+      <div id="project-details">
+        <div class="subheader-text">Part 1: Defining Correspondences</div>
+        <div class="project-details-content">
+          <div class="body-text">To apply morphing from my face to dear Son, I first needed to get correspondences of both images. In order to do this, I used previous Berkeley Computer Vison student class tool <a href="https://cal-cs180.github.io/fa23/hw/proj3/tool.html" target="_blank">(Link)</a>.  </div>
+          <br>
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/face_morph_result/me.png"></image>
+              <span class="image-caption center-text">My face</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+              <img src="../assets/face_morph_result/ran.png" class="gallery-image">
+              <span class="image-caption center-text">Son</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <img src="../assets/face_morph_result/jae.png" class="gallery-image">
+                <span class="image-caption center-text">Jae</span>
+            </div>
+          </div>
+
+          </div>
+          <div class="body-text">I tried to pick as many points as possible on notable features like the nose, lips, eyes, etc. After getting the points using the tool, I applied Delaunay triangulation to generate indices that form triangles.</div>
+        
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/face_morph_result/part1me with Delaunay triangulation.png"></image>
+              <span class="image-caption center-text">My face</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+              <img src="../assets/face_morph_result/part1ran with Delaunay triangulation.png" class="gallery-image">
+              <span class="image-caption center-text">Son</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <img src="../assets/face_morph_result/part1jae with Delaunay triangulation.png" class="gallery-image">
+                <span class="image-caption center-text">Jae</span>
+            </div>
+          </div>
+
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Part 2: Computing the "Mid-way Face"</div>
+        
+        <div class="body-text">In order to compute 'Mid-way' face,</div>
+        2) warping both faces into that shape, and 
+        <div class="body-text">1. computing the average shape (a.k.a the average of each keypoint location in the two faces),</div>
+        <div class="math-equation center-text"> \(  (Image1 + Image2 ) / 2 \) </div>
+        <div class="body-text">2. warping both faces into that shape</div>
+        <div class="body-text" style="padding-left: 30px;">Using loop, from the points and corresponding triangle indices I got from part 1, I find the affine transformation matrix and multiply it by one destination triangle. Then, I apply bilinear interpolation.</div>
+        <div class="body-text">3. cross-dissolve the colors together.</div>
+        
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/face_morph_result/me.png"></image>
+                <span class="image-caption center-text">My face</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/face_morph_result/part2me + ran.png"></image>
+                <span class="image-caption center-text">My face + Son</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <img src="../assets/face_morph_result/ran.png" class="gallery-image">
+                <span class="image-caption center-text">Son</span>
+            </div>            
+        </div>
+                
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+                <image class="gallery-image" src="../assets/face_morph_result/me.png"></image>
+                <span class="image-caption center-text">My face</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+                <img src="../assets/face_morph_result/part2me + jae.png" class="gallery-image">
+                <span class="image-caption center-text">My face + Jae</span>
+              </div>
+            <div class="gallery-image-container one-third-width">
+                <img src="../assets/face_morph_result/jae.png" class="gallery-image">
+                <span class="image-caption center-text">Son</span>
+            </div>            
+        </div>
+
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Part 3: The Morph Sequence</div>
+        
+        <div class="body-text">To make the morph sequence, it is very similar to what I did in part 2, except that I gradually increased the warp fraction and cross-dissolve fraction. For the sequence, I used 45 frames, starting from my face and morphing into Son's face.</div>
+        <img class="project-header-image" id="me_ran" src="../assets/face_morph_result/part3me_ran_sequence.gif" alt="My GIF" style="width:  30%;">
+        <div class="body-text" style="text-align: center;"> My face to Son</div>
+
+        <hr style="width: 100%;">
+        
+        <div class="subheader-text">Part 4: The "Mean face" of a population</div>
+        <div class="body-text">Here, I created a mean face, which is a sum of all faces and divide by number of faces. For the dataset, I used <a href="https://fei.edu.br/~cet/facedatabase.html">(Link)</a>. </div>
+        <div class="body-text">In order to create a mean face more specifically, </div>
+        <div class="body-text" style="padding-left: 30px;">1. Get all points that were annotated in the dataset and sum them up divide by the number of population. Add 4 points to corner of each points so that it captures the whole image</div>
+        <div class="body-text" style="padding-left: 30px;">2. Morph each of the faces in the dataset provided into the average shape.</div>
+        <div class="body-text" style="padding-left: 30px;">3. Compute the average face of the population.</div>
+
+        <div class="body-text">Here are selected faces out of 200 faces:</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/1a.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/2a.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/3a.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/4a.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/5a.jpg"></image>
+            </div>
+        </div>
+
+        <div class="body-text">Here are selected smile faces out of 200 faces :</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/1b.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/2b.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/3b.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/4b.jpg"></image>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+                <image class="gallery-image" src="../assets/face_morph_result/5b.jpg"></image>
+            </div>
+        </div>
+
+        <br>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/face_morph_result/part4a_avg_face_wo_morph.png"></image>
+                <span class="image-caption center-text">Average Population Face without Morphing</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <img src="../assets/face_morph_result/part4a_avg_face_w_morph.png" class="gallery-image">
+                <span class="image-caption center-text">Average Population Face with Morphing</span>
+              </div>
+            <div class="gallery-image-container quarter-width">
+                <img src="../assets/face_morph_result/part4b_avg_face_wo_morph.png" class="gallery-image">
+                <span class="image-caption center-text">Average Population Smile Face without Morphing</span>
+            </div>            
+            <div class="gallery-image-container quarter-width">
+                <img src="../assets/face_morph_result/part4b_avg_face_w_morph.png" class="gallery-image">
+                <span class="image-caption center-text">Average Population Smile Face with Morphing</span>
+            </div>            
+        </div>
+        
+        <div class="body-text">Now, from images that I got; I warped my face into average population's shape and average population's shape to my face shape.</div>
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/face_morph_result/part4me_to_avg.png"></image>
+                <span class="image-caption center-text">My Face Shape to Average Population Face Shape</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <img src="../assets/face_morph_result/part4avg_to_me.png" class="gallery-image">
+                <span class="image-caption center-text">Average Population Face Shape to My Face Shape</span>
+              </div>
+        </div>
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Part 5: Caricatures: Extrapolating from the mean</div>
+        <div class="body-text">I made Caricatures of my face by extrapolating from the average population face shape that I got from previous part. For my previous part, I was using 0 to 1 (inclusive) for my warping fraciton, but to create a Caricatures, I used -0.5, and 1.5</div>
+
+        
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/face_morph_result/part5alpha-05.png"></image>
+                <span class="image-caption center-text">alpha = -0.5</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <img src="../assets/face_morph_result/part5alpha15.png" class="gallery-image">
+                <span class="image-caption center-text">alpha = 1.5</span>
+              </div>
+        </div>
+
+        <hr style="width: 100%;">
+
+        <div class="subheader-text">Bells and Whistles: 1. Gender Change</div>
+        
+        <div class="body-text" >For my first B&W, I try to change my gender of my face to female. The dataset I used is the same that I used for part 3 and 4 but I selected only females faces so that the average face of female would not look like male. </div>
+        <div class="body-text" style="padding-left: 30px;">1. I selected only female faces and points. Then get read those faces and points.</div>
+        <div class="body-text" style="padding-left: 30px;">2. Resized my faces more larger so that it matches to the face that I am trying to compare with. </div>
+        <div class="body-text" style="padding-left: 30px;">3. I then calculated the mean shape of the females' faces and morph each one of them into average shape.</div>
+        <div class="body-text" style="padding-left: 30px;">4. Morph my image to female average face to change the gender of the face.</div>
+
+        <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/face_morph_result/part4_me_resized.png"></image>
+                <span class="image-caption center-text">Resized Face</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/face_morph_result/shape.png"></image>
+                <span class="image-caption center-text">Shape Only</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/face_morph_result/appear.png"></image>
+                <span class="image-caption center-text">Appearance Only</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/face_morph_result/both.png"></image>
+                <span class="image-caption center-text">Both</span>
+            </div>
+        </div>
+        <div class="body-text" >The resulting face looks a bit like a female, but making my hair longer and removing the band would make it appear more feminine.</div>
+
+        <div class="subheader-text">Bells and Whistles: 2. Aging Music Video</div>
+        <div class="body-text">I made a music video for my older sister. I was not able to get her middle school picture, so the ages range from 3, 5, 10, 17, 20, 23, 25, 27, to 30. For each age, there are 90 frames, and I used an online GIF to MP4 converter tool to convert it and add audio.</div>
+        <div style="text-align: center;">
+            <video width="940" height="660" controls>
+                <source src="../assets/face_morph_result/bw_aging_sequence video.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        
+
+          <hr style="width: 100%;">
+          <div class="subheader-text">Acknowledgment</div>
+          <div class="body-text">
+            I used the <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template">Unemployables Portfolio Template</a> for this website.
+          </div>
+          
+          
+        </div>
+      </div>
+
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/twitter.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:whitevans.eth@gmail.com">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
