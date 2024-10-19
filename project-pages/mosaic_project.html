@@ -1,0 +1,559 @@
+
+
+<!-- 
+  IMPORTANT! 
+  
+  Keep this file unchanged to use as a template for all future project pages. 
+
+  For every new project you add to your portfolio, make a copy of this file in the
+  'project-pages' folder with a name related to the project.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <!-- 
+      TODO
+
+      Upload your Unemployable (or whatever photo you like) to the assets/images folder
+      and change the name of the image below to match the uploaded one
+
+      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+
+      This should be the same across all pages.
+     -->
+     <link rel="icon" href="../assets/images/1311.png" />
+     <title>Unemployables Portfolio</title>
+    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <!-- 
+          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
+
+          (this should be the same across all pages)
+         -->
+        <span class="nav-title">Seonghyun Park</span>
+        <!-- 
+          TODO - Change the email after 'mailto:' to your email address for contact 
+        
+          (this should be the same across all pages)
+        -->
+        <a class="button" href="mailto:spark6015@berkeley.edu">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">A Mosaic</div>
+        
+        
+            <img class="project-header-image" src="../assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png" style="width:  50%;">
+        
+          <div class="subheader-text ">Overview</div> 
+          <div class="body-text">
+            In this project, I utilize homography to warp images and create a series of images into a mosaic. The first part of the project consists of taking pictures, calculating homographies between two images, warping the images, performing image rectification, and blending the images into a mosaic.
+          </div>
+        
+      </div>
+
+      <hr style="width: 100%;">
+      
+      <div id="project-details">
+        <div class="subheader-text">Shoot the Pictures & Recovering Homography</div>
+        <div class="project-details-content">
+          <div class="body-text">
+            The first step is to take pictures of the images I will be using. I aimed for around 40% to 70% overlap between images to ensure smooth alignment. While taking the pictures, I needed to maintain the same center of projection and capture the images in quick succession to minimize changes in lighting and movement.
+          </div>
+          <br>
+          
+          <div class="body-text">
+            I took pictures at the library and plot points using         <a href="https://cal-cs180.github.io/fa23/hw/proj3/tool.html" target="_blank">(Link)</a>. By using these points, I need to find homography matrix of these two points for warping the image.
+          </div>
+
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_left.jpeg"></image>
+              <span class="image-caption center-text">Main stacks left</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_left_plots.png"></image>
+              <span class="image-caption center-text">Main stacks left with points</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_right.jpeg"></image>
+              <span class="image-caption center-text">Main stacks right</span>
+            </div>
+            <div class="gallery-image-container quarter-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_right_plots.png"></image>
+              <span class="image-caption center-text">Main stacks right with points</span>
+            </div>
+          </div>
+          
+          <div class="body-text">
+            To find homography matrix using these points, I first stack each x and y points into the same matrix and use below equation to find unknowns, which are a, b, c, d, e, f, g and h.
+            \[
+            \begin{bmatrix}
+            wx' \\
+            wy' \\
+            w
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+            a & b & c \\
+            d & e & f \\
+            g & h & 1
+            \end{bmatrix}
+            \begin{bmatrix}
+            x \\
+            y \\
+            1
+            \end{bmatrix} 
+            \]
+
+            Using systems of least squares, we can come up with this to find unknowns;
+            \[
+            \begin{bmatrix}
+            x & y & 1 & 0 & 0 & 0 & -xx' & -yx' \\
+            0 & 0 & 0 & x & y & 1 & -xy' & -yy'
+            \end{bmatrix}
+            \begin{bmatrix}
+            a \\
+            b \\
+            c \\
+            d \\
+            e \\
+            f \\
+            g \\
+            h
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+            x' \\
+            y'
+            \end{bmatrix}
+            \]
+          </div>
+          <hr style="width: 100%;">
+          <div class="subheader-text">Warp the images</div>
+          
+          <div class="body-text">
+            For warping the images, I created a function called warpImage that takes im (image) and H (homography) as inputs. I first define the corners of the image and warp them using the homography. By doing this, I can find the warp bounding box. Next, I get the minimum and maximum x & y values to create a mask, which I use to determine the destination coordinates for inverse warping. By mapping the coordinates from the output image back to the input image, we can ensure that the output image gets appropriate values. Finally, I used the map_coordinates function to set the pixels accordingly.
+          </div>
+
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_left_warped.png"></image>
+              <span class="image-caption center-text">Main stacks warped left</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_left_right.png"></image>
+              <span class="image-caption center-text">Main stacks left and right</span>
+            </div>
+          </div>
+
+          <hr style="width: 100%;">
+          <div class="subheader-text">Image Rectification</div>
+          <div class="body-text">
+            Using homography and warping functions that I made, I can now perform 'rectification' of an image. I took photos to rectify and pick coordinates that I want it to be rectify and warp to proper coordinate to make it rectangle. 
+          </div>
+
+          <div class="body-text">
+            For this rectification, I used [0, 0], [0,100], [750, 0], [750, 100].
+          </div>
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_desk.jpeg"></image>
+              <span class="image-caption center-text">Keyboard</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_desk.png"></image>
+              <span class="image-caption center-text">Keyboard with points</span>
+            </div>
+            
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_desk_rectificaiton.png"></image>
+              <span class="image-caption center-text">Rectified Keyboard</span>
+            </div>
+          </div>
+
+          
+          <div class="body-text">
+            For this rectification, I used [0, 0], [0,200], [300, 0], [300, 200].
+          </div>
+
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_doordash.jpeg"></image>
+              <span class="image-caption center-text">Doordash coupon</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_coupon.png"></image>
+              <span class="image-caption center-text">Doordash coupon with points</span>
+            </div>
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/mosiac_result/part1_coupon_rectificaiton.png"></image>
+              <span class="image-caption center-text">Rectified Doordash coupon</span>
+            </div>
+    
+          </div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subheader-text">Blend the Images into a Mosaic</div>
+        <div class="body-text">
+          For this part, I first plot points using the tool for first to second and third to second image and using the points, I created homography matrices and warp first and third images. 
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape1.jpeg"></image>
+            <span class="image-caption center-text">House Balcony View Left</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape2.jpeg"></image>
+            <span class="image-caption center-text">House Balcony View Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape3.jpeg"></image>
+            <span class="image-caption center-text">House Balcony View Right</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape12_plots.png"></image>
+            <span class="image-caption center-text">House Balcony View Left to Middle</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape21_plots.png"></image>
+            <span class="image-caption center-text">House Balcony View Middle to Left</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape22_plots.png"></image>
+            <span class="image-caption center-text">House Balcony View Middle to Right</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape32_plots.png"></image>
+            <span class="image-caption center-text">House Balcony View Right to Middle</span>
+          </div>
+        </div>
+
+        <div class="body-text">
+          Then, I perform warping.
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape12.png"></image>
+            <span class="image-caption center-text">House Balcony View Warped Left</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape2.jpeg"></image>
+            <span class="image-caption center-text">House Balcony View Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape32.png"></image>
+            <span class="image-caption center-text">House Balcony View Warped Right</span>
+          </div>
+        </div>        
+        
+        <div class="body-text">
+          With these warped images, I create a new image with a size that accommodates the warped portions from the first and third images, plus the size of the third image. Then, I added the first warped image, the third warped image, and the unwarped image.
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3_stiched.png"></image>
+            <span class="image-caption center-text">House Balcony View Warped Left</span>
+          </div>
+        </div>        
+        
+        <div class="body-text">
+          This approach works reasonably well, but there are artifacts due to improper edge blending. To address this, I created a distance map for each image after masking them. I then summed up all the distance maps, normalizing by the total distance maps, and combined them with the high-frequency components of each image.
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape1_dismap.png"></image>
+            <span class="image-caption center-text">House Balcony View Warped Left distance map</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape2_dismap.png"></image>
+            <span class="image-caption center-text">House Balcony View Middle distance map</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape3_dismap.png"></image>
+            <span class="image-caption center-text">House Balcony View Warped Right distance map</span>
+          </div>
+        </div>  
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container ">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png"></image>
+            <span class="image-caption center-text">House Balcony View Warped Left</span>
+          </div>
+        </div>      
+
+      
+        <div class="body-text">
+          Here are ohter images that turned into a Mosaic.
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor1.jpeg"></image>
+            <span class="image-caption center-text">Monitor Left</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor2.jpeg"></image>
+            <span class="image-caption center-text">Monitor Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor3.jpeg"></image>
+            <span class="image-caption center-text">Monitor Right</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor12_plots.png"></image>
+            <span class="image-caption center-text">Monitor Left to Middle</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor21_plots.png"></image>
+            <span class="image-caption center-text">Monitor Middle to Left</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor22_plots.png"></image>
+            <span class="image-caption center-text">Monitor Middle to Right</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor32_plots.png"></image>
+            <span class="image-caption center-text">Monitor Right to Middle</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor12.png"></image>
+            <span class="image-caption center-text">Monitor warped Left</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor2.png"></image>
+            <span class="image-caption center-text">Monitor warped Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor32.png"></image>
+            <span class="image-caption center-text">Monitor warped Right</span>
+          </div>
+        </div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor1part1_monitor2part1_monitor3_stiched.png"></image>
+            <span class="image-caption center-text">Monitor stiched </span>
+          </div>
+        </div>      
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container ">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_monitor1part1_monitor2part1_monitor3mosaic.png"></image>
+            <span class="image-caption center-text">Monitor Mosaic</span>
+          </div>
+        </div>      
+
+
+        <!--  -->
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining1.jpeg"></image>
+            <span class="image-caption center-text">Dining Table Left</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining2.jpeg"></image>
+            <span class="image-caption center-text">Dining Table Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining3.jpeg"></image>
+            <span class="image-caption center-text">Dining Table Right</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining12_plots.png"></image>
+            <span class="image-caption center-text">Dining Table Left to Middle</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining21_plots.png"></image>
+            <span class="image-caption center-text">Dining Table Middle to Left</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining22_plots.png"></image>
+            <span class="image-caption center-text">Dining Table Middle to Right</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining32_plots.png"></image>
+            <span class="image-caption center-text">Dining Table Right to Middle</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining12.png"></image>
+            <span class="image-caption center-text">Dining Table warped Left</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining2.png"></image>
+            <span class="image-caption center-text">Dining Table warped Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining32.png"></image>
+            <span class="image-caption center-text">Dining Table warped Right</span>
+          </div>
+        </div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining1part1_dining2part1_dining3_stiched.png"></image>
+            <span class="image-caption center-text">Dining Table stiched </span>
+          </div>
+        </div>      
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container ">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_dining1part1_dining2part1_dining3mosaic.png"></image>
+            <span class="image-caption center-text">Dining Table Mosaic</span>
+          </div>
+        </div>    
+
+
+        <!--  -->
+
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig1.jpeg"></image>
+            <span class="image-caption center-text">Refrigerator Top</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig2.jpeg"></image>
+            <span class="image-caption center-text">Refrigerator Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig3.jpeg"></image>
+            <span class="image-caption center-text">Refrigerator Bottom</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig12_plots.png"></image>
+            <span class="image-caption center-text">Refrigerator Top to Middle</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig21_plots.png"></image>
+            <span class="image-caption center-text">Refrigerator Middle to Top</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig22_plots.png"></image>
+            <span class="image-caption center-text">Refrigerator Middle to Bottom</span>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig32_plots.png"></image>
+            <span class="image-caption center-text">Refrigerator Bottom to Middle</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig12.png"></image>
+            <span class="image-caption center-text">Refrigerator warped Top</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig2.png"></image>
+            <span class="image-caption center-text">Refrigerator warped Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig32.png"></image>
+            <span class="image-caption center-text">Refrigerator warped Bot</span>
+          </div>
+        </div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig1part1_refig2part1_refig3_stitched.png"></image>
+            <span class="image-caption center-text">Dining Table stiched </span>
+          </div>
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/mosiac_result/part1_refig1part1_refig2part1_refig3mosaic.png"></image>
+            <span class="image-caption center-text">Dining Table Mosaic</span>
+          </div>
+        </div>      
+
+      </div>
+
+
+
+
+      <!-- End of Project details -->
+
+
+    </div>
+
+    
+
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/twitter.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:whitevans.eth@gmail.com">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
