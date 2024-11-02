@@ -80,6 +80,7 @@
       <hr style="width: 100%;">
       
       <div id="project-details">
+        <div class="subheader-text">Part 4A</div>
         <div class="subheader-text">Shoot the Pictures & Recovering Homography</div>
         <div class="project-details-content">
           <div class="body-text">
@@ -223,6 +224,7 @@
           </div>
 
         </div>
+
         <hr style="width: 100%;">
         <div class="subheader-text">Blend the Images into a Mosaic</div>
         <div class="body-text">
@@ -513,13 +515,224 @@
             <span class="image-caption center-text">Refrigerator Mosaic</span>
           </div>
         </div>      
+        <hr style="width: 100%;">
+        <div class="subheader-text">Part 4B</div>
+          <div class="project-details-content">
+            <div class="subheader-text">Harris Interest Point Detector</div>
+            <div class="body-text">
+              In the previous part, I manually chose correspondences of images and blended the warped image to make a panorama.
+              For this part, I am going to find corners of the image using the Harris Interest Point Detector.
+            </div>
+            
+            <div class="body-text">
+              First, I call the provided function to get Harris Corners and the Harris matrix.
+            </div>
+            
 
-      </div>
+            <div class="project-gallery-content">
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/harris_points_landscape1.png"></image>
+                <span class="image-caption center-text">Landscape 1 with Harris Interest Points</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/harris_matrix_image1.png"></image>
+                <span class="image-caption center-text">Landscape 1 with Harris Matrix</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/harris_points_landscape2.png"></image>
+                <span class="image-caption center-text">Landscape 2 with Harris Interest Points</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/harris_matrix_image2.png"></image>
+                <span class="image-caption center-text">Landscape 2 with Harris Matrix</span>
+              </div>
+            </div>
+            <hr style="width: 100%;">
+            <div class="subheader-text">Adaptive Non-Maximal Suppression (ANMS)</div>
+            <div class="body-text">
+              As observed in both images, there are too many Harris corners, so we want to suppress some of them with ANMS. This allows us to 
+              have more evenly spread points, which is effective when obtaining homography or morphing the image.
+              
+              In the paper 'Multi-Image Matching using Multi-Scale Oriented Patches,' this mathematical equation is used to get filtered points: 
+              \[ r_i = \min |x_i - x_j|, \text{ s.t. } f(x_i) < c_{\text{robust}} f(x_j), \, x_j \in I \]
 
+              While this is a effective way to find useful points, but as it runs in O(N^2), I first filter Harris Corners by its intensity in Harris Matrix and keep
+               2000 points.
+            </div>
+            
+            <div class="project-gallery-content">
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/filterd_Harris_landscape1.png"></image>
+                <span class="image-caption center-text">Landscape 1 with a Filter</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/anms_landscape1.png"></image>
+                <span class="image-caption center-text">Landscape 1 ANMS</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/filterd_Harris_landscape2.png"></image>
+                <span class="image-caption center-text">Landscape 2 with a Filter</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/anms_landscape2.png"></image>
+                <span class="image-caption center-text">Landscape 2 ANMS</span>
+              </div>
+            </div>
+            <hr style="width: 100%;">
+            <div class="subheader-text">Feature Descriptor Extraction</div>
+            <div class="body-text">
+              Now that we have effective interest points, we need to find feature descriptors from the images to better compare homography.
+               For the size of each feature extraction image, I use 40x40, with a feature size of 8. I first iterate through the ANMS 
+               coordinates to check for a 40x40 image, then downsample and resize. After this, I normalize the feature to have a mean of 
+               0 and a standard deviation of 1, and then flatten it.
+            </div>
+            <div class="body-text">
+              Here are some features that I extracted:
+            </div>
+            <div class="project-gallery-content">
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/img0.png"></image>
+                <span class="image-caption center-text">Feature 0</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/des0.png"></image>
+                <span class="image-caption center-text">Feature 0 resized</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/img1.png"></image>
+                <span class="image-caption center-text">Feature 1</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/des1.png"></image>
+                <span class="image-caption center-text">Feature 1 resized</span>
+              </div>
+            </div>
+            <div class="project-gallery-content">
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/img2.png"></image>
+                <span class="image-caption center-text">Feature 2</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/des2.png"></image>
+                <span class="image-caption center-text">Feature 2 resized</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/img3.png"></image>
+                <span class="image-caption center-text">Feature 3</span>
+              </div>
+              <div class="gallery-image-container quarter-width">
+                <image class="gallery-image" src="../assets/mosiac_result/des3.png"></image>
+                <span class="image-caption center-text">Feature 3 resized</span>
+              </div>
+            </div>
+            <hr style="width: 100%;">
+
+            <div class="subheader-text">Feature Matching</div>
+            <div class="body-text">
+              With feature descriptor extractions, we can now perform feature matching. To do this, I passed in the features extracted from the two images and calculated the Euclidean distance using the dist2 function.
+              After this, I found the two nearest descriptors to the one I am comparing and calculated the distance ratio to check if it exceeds the threshold. By adding only pairs with a ratio below the threshold, we eliminate ambiguous matches.
+            </div>
+
+            <div class="body-text">
+              Here is the example of matching image:
+            </div>
+
+            <div class="project-gallery-content">
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/feature_match_1.png"></image>
+                <span class="image-caption center-text">With threshold 1</span>
+              </div>
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/feature_match_07.png"></image>
+                <span class="image-caption center-text">With threshold 0.7</span>
+              </div>
+            </div>
+
+            <div class="body-text">
+              As observed, with proper threshold, it correctly removes some ambiguous pairs.
+            </div>
+
+            <hr style="width: 100%;">
+
+            <div class="subheader-text">RANSAC</div>
+            <div class="body-text">
+              While the feature matching useful, there are some pairs that are not correctly connected together. So we use what we called RANSAC to find 4 correct points that can perform best homography.
+            </div>
+
+            <div class="body-text">
+              Since I need to randomly select 4 pairs, I set the iterations to 10,000. To estimate the best homography matrix using RANSAC, for each iteration, I randomly selected 4 points and computed the homography, then determined the inliers by checking which points are within a specific threshold distance. I kept track of the largest set of inliers found. After the iterations, I recomputed the homography matrix using these inliers to obtain the best possible homography.
+            </div>
+            
+            <div class="body-text">
+              Here is the image that warped using the homography I got from RANSAC :
+            </div>
+            <div class="project-gallery-content">
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/warped_with_anms.png"></image>
+                <span class="image-caption center-text">With threshold 1</span>
+              </div>
+            </div>
+
+            
+            <div class="body-text">
+              Here are results using Automatic Matchings with RANSAC with Manual Matchings:
+            </div>
+
+            <div class="project-gallery-content">
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/landscape.png"></image>
+                <span class="image-caption center-text">Automatic Matching</span>
+              </div>
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png"></image>
+                <span class="image-caption center-text">Manual Matching</span>
+              </div>
+            </div>
+
+            <div class="project-gallery-content">
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/monitor.png"></image>
+                <span class="image-caption center-text">Automatic Matching</span>
+              </div>
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/part1_monitor1part1_monitor2part1_monitor3mosaic.png"></image>
+                <span class="image-caption center-text">Manual Matching</span>
+              </div>
+            </div>
+
+            <div class="project-gallery-content">
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/refig.png"></image>
+                <span class="image-caption center-text">Automatic Matching</span>
+              </div>
+              <div class="gallery-image-container half-width">
+                <image class="gallery-image" src="../assets/mosiac_result/part1_refig1part1_refig2part1_refig3mosaic.png"></image>
+                <span class="image-caption center-text">Manual Matching</span>
+              </div>
+            </div>
+                        
+            <div class="body-text">
+              Although, results may look similar, but there are differences and Automatic correspondences matchings are better than the other. It was 
+              intersting to see how panorama works and thorougly enjoyed process of implememting automatic correspondences. Also, I implementing RANSAC and 
+              ANMS were very interesting. These techniques opened up new possibilities I hadn’t considered applying before!
+            </div>
+          </div>
+
+      
+      
 
 
 
       <!-- End of Project details -->
+      <hr style="width: 100%;">
+      <div class="subheader-text">Acknowledgment</div>
+      <div class="body-text">
+        I used the <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template">Unemployables Portfolio Template</a> for this website.
+      </div>
+
+      
+
+
 
 
     </div>
