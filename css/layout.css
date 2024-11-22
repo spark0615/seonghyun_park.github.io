@@ -255,9 +255,26 @@ body {
       width: calc((100% - 16px) / 5.3);
       margin: 0 auto;
     }
+    .gallery-image-container.one-sixth-width {
+      width: calc((100% - 16px) / 6.4);
+      margin: 0 auto;
+    }
+    .gallery-image-container.one-seventh-width {
+      width: calc((100% - 16px) / 7.5);
+      margin: 0 auto;
+    }
+
+    .gallery-image-container.one-width {
+      width: calc((100% - 16px) / 1.5);
+      margin: 0 auto;
+    }
     .gallery-image {
       width: 100%;
       height: auto;
+    }
+
+    .upside-down {
+      transform: rotate(180deg);
     }
 
 

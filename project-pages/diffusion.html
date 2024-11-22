@@ -1,0 +1,1216 @@
+
+
+<!-- 
+  IMPORTANT! 
+  
+  Keep this file unchanged to use as a template for all future project pages. 
+
+  For every new project you add to your portfolio, make a copy of this file in the
+  'project-pages' folder with a name related to the project.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <!-- 
+      TODO
+
+      Upload your Unemployable (or whatever photo you like) to the assets/images folder
+      and change the name of the image below to match the uploaded one
+
+      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+
+      This should be the same across all pages.
+     -->
+     <link rel="icon" href="../assets/images/1311.png" />
+     <title>Unemployables Portfolio</title>
+    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <!-- 
+          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
+
+          (this should be the same across all pages)
+         -->
+        <span class="nav-title">Seonghyun Park</span>
+        <!-- 
+          TODO - Change the email after 'mailto:' to your email address for contact 
+        
+          (this should be the same across all pages)
+        -->
+        <a class="button" href="mailto:spark6015@berkeley.edu">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">Fun with Diffusion Models!</div>
+        
+        
+            
+        <br>
+        <div class="subheader-text ">Overview</div>  
+        <div class="body-text">
+          In this project, I will explore way of generating images with sampling loops and leverage them to create optical illusions. Then, I will implement Unet architecture.
+        </div>
+        
+      </div>
+
+    
+      <hr style="width: 100%;">
+      <div id="project-details">
+        <div class="subheader-text">Part A: The Power of Diffusion Models!</div>
+
+        <div class="subsubheader-text">1.1: Forward</div>
+        <div class="project-details-content">
+          <div class="body-text">The idea of diffusion model is to start with a clean image \(x_0\) and iteratively add noise to the image to get more noisy image of \(x_t\). This is what we called the Forward Process.</div>
+          <div class="body-text">Below, I applied the forward process on UC Berkeley Campanile at a size of (64 x 64) with times [250, 500, 750]. </div>
+          <br>
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original Image.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/t-250.png"></image>
+              <span class="image-caption center-text">t = 250</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/t-500.png"></image>
+              <span class="image-caption center-text">t = 500</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/t-750.png"></image>
+              <span class="image-caption center-text">t = 750</span>
+            </div>
+          </div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.2: Classical Denoising</div>
+        <div class="project-details-content">
+          <div class="body-text">Above, I was able to add noise to an image. There ways to denoise the noisy image and I will try denoising the image by applying Gaussian Blur Filter, which is not very effective.</div>
+          
+          <br>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/t-250.png"></image>
+              <span class="image-caption center-text">t = 250</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/t-500.png"></image>
+              <span class="image-caption center-text">t = 500</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/t-750.png"></image>
+              <span class="image-caption center-text">t = 750</span>
+            </div>
+          </div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/blur t = 250.png"></image>
+              <span class="image-caption center-text">blur at t = 250</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/blur t = 500.png"></image>
+              <span class="image-caption center-text">blur at t = 500</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/blur t = 750.png"></image>
+              <span class="image-caption center-text">blur at t = 750</span>
+            </div>
+          </div>
+
+          <div class="body-text">As I applied Gaussian Blur Filter, it did make the image look better, but it is still hard to see actual content of the image.</div>
+
+        </div>
+        <hr style="width: 100%;">
+
+        <div class="subsubheader-text">1.3: One-Step Denoising </div>
+        <div class="project-details-content">
+          <div class="body-text">As we explored the Gaussian Blur, it did not work quite well. Now, let's use diffusion model to denoise these images. I used UNet that is already been trained with large data of \( (x_0, x_t) \) pairs of image. Additionally, since this diffusion model was trained with text conditioning, I will use ("a high quality photo") as a text promt embedding</div>
+          
+          <div class="body-text">How it works is that we first estimate the noise in the noisy image using the pretrained diffusion model. Then, we remove this estimated noise from the noisy image to get to reconstruct the image.</div>
+          <br>
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original 250.png"></image>
+              <span class="image-caption center-text">Original Image at t = 250</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original 500.png"></image>
+              <span class="image-caption center-text">Original Image at t = 500</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original 750.png"></image>
+              <span class="image-caption center-text">Original Image at t = 750</span>
+            </div>
+          </div>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Noisy 250.png"></image>
+              <span class="image-caption center-text">Noisy at t = 250</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Noisy 500.png"></image>
+              <span class="image-caption center-text">Noisy at t = 500</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Noisy 750.png"></image>
+              <span class="image-caption center-text">Noisy at t = 750</span>
+            </div>
+
+          </div>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Estimate 250.png"></image>
+              <span class="image-caption center-text">Estimate Image at t = 250</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Estimate 500.png"></image>
+              <span class="image-caption center-text">Estimate Image at t = 500</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Estimate 750.png"></image>
+              <span class="image-caption center-text">Estimate Image at t = 750</span>
+            </div>
+            
+          </div>
+
+          <div class="body-text">As we can observe, the less noise in the image, it predicts better. For instance, the image at t 750 has a shape of Campanile, but the it looks quite different then Campanile.</div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.4: Iterative Denoising</div>
+        <div class="project-details-content">
+          <div class="body-text">In previous part, we denoised the image using UNet which did a great job compared to Gaussian Blur. I was using one-step where I tried to reconstruct with one time step but diffusion model is designed to denoise iteratively.</div>
+          
+          <div class="body-text">We can start from timestep T = 1000, but it would cost too much as it needs to iterate more. So, we made a variable called stirded_timesteps wher eit contains a less number of timestep than just range of time from 0 to 1000. Here I used stride of 30. </div>
+          <p>
+            \[ x_t' = \frac{\sqrt{\bar{\alpha}_t' \beta_t}}{1 - \bar{\alpha}_t} x_0 
+            + \frac{\alpha_t \sqrt{1 - \bar{\alpha}_t'}}{1 - \bar{\alpha}_t} x_t + v \sigma \]
+          </p>
+          
+          <div class="body-text">The equation above is what we used to do the iterative denoising. For i_start, I used 10.</div>
+
+          <br>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/noisy_images_iterative 90.png"></image>
+              <span class="image-caption center-text">t = 90</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/noisy_images_iterative 240.png"></image>
+              <span class="image-caption center-text">t = 240</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/noisy_images_iterative 390.png"></image>
+              <span class="image-caption center-text">t = 390</span>
+            </div>
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/noisy_images_iterative 540.png"></image>
+              <span class="image-caption center-text">t = 540</span>
+            </div>
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/noisy_images_iterative 690.png"></image>
+              <span class="image-caption center-text">t = 690</span>
+            </div>
+
+          </div>
+
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original Image.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Iterative denoising clean.png"></image>
+              <span class="image-caption center-text">Iteratively Denoised Image</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/One Step.png"></image>
+              <span class="image-caption center-text">One-Step Denoised Image</span>
+            </div>
+            
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Predict Blurred Image.png"></image>
+              <span class="image-caption center-text">Gaussian Blurred Image</span>
+            </div>
+          </div>
+
+          <div class="body-text">As observed, the iteratively denoised image has more details in trees behind.</div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.5: Diffusion Model Sampling</div>
+        <div class="project-details-content">
+          <div class="body-text"> In previous part, we are providing a image of UC Berkeley's Campanile, but what if we input random noise and have "a high quality photo" as text promt embedding? I sued torch.randn to make random noise image and feed into the function that we implement in the previous part.</div>
+          
+          <br>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Diff rand image 0.png"></image>
+              <span class="image-caption center-text">Sample 1</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Diff rand image 1.png"></image>
+              <span class="image-caption center-text">Sample 2</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Diff rand image 2.png"></image>
+              <span class="image-caption center-text">Sample 3</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Diff rand image 3.png"></image>
+              <span class="image-caption center-text">Sample 4</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Diff rand image 4.png"></image>
+              <span class="image-caption center-text">Sample 5</span>
+            </div>
+          </div>
+         
+
+          <div class="body-text">I was able to get some images that looks like something, yet some of them are hard to see what they are. </div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.6: Classifier-Free Guidance (CFG)</div>
+        <div class="project-details-content">
+          <div class="body-text"> In previous, I observed that the images generated are not so good and in order to improve the quality of the image, we can expand its diversity with a technique called Classifier-Free Guidance.</div>
+          
+          <div class="body-text">In CFG, we add additional unconditional noise estimate and compute the final noise estimate by \[ \epsilon = \epsilon_u + \gamma (\epsilon_c - \epsilon_u) \]</div>
+          <div class="body-text">For text embeddings, I put ("a high quality photo") conditional embedding and ("") unconditional embedding and \(\gamma = 7 \).</div>
+          
+          <br>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image with CFG 1.png"></image>
+              <span class="image-caption center-text">Sample 1 with CFG</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image with CFG 2.png"></image>
+              <span class="image-caption center-text">Sample 2 with CFG</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image with CFG 3.png"></image>
+              <span class="image-caption center-text">Sample 3 with CFG</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image with CFG 4.png"></image>
+              <span class="image-caption center-text">Sample 4 with CFG</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image with CFG 5.png"></image>
+              <span class="image-caption center-text">Sample 5 with CFG</span>
+            </div>
+          </div>
+         
+
+          <div class="body-text">With CFG, images look much better and clear enough to see what they are.</div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.7 + 1.7.1: Image-to-Image Translation & Hand-drawn and Web Images</div>
+        <div class="project-details-content">
+          <div class="body-text"> In this part, we implemented SDEdit. This algorithm and process allow infer more details with pusing noisy images back onto the manifold of natural images. For starting index, I used [1, 3, 5, 7, 10, 20].</div>
+            
+          <br>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image CFG 1.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image CFG 2.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image CFG 3.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image CFG 4.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image CFG 5.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image CFG 6.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original Image.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+          </div>
+
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image cam 1.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image cam 2.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image cam 3.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image cam 4.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image cam 5.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image cam 6.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/cam.jpg"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+          </div>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image sather 1.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image sather 2.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image sather 3.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image sather 4.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image sather 5.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image sather 6.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/sather.jpg"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+          </div>
+
+          <div class="body-text"> Below is series of SDEdits of an image that I got from a web:</div>
+            
+    
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image web1.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image web2.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image web3.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image web4.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image web5.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image web6.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/flower.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+          </div>
+
+          
+          <div class="body-text"> Below is series of SDEdits of hand drawns images:</div>
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw11.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw12.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw13.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw14.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw15.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw16.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/myImage.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+            
+          </div>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw21.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw22.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw23.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw24.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw25.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Image to Image draw26.png"></image>
+              <span class="image-caption center-text">SDEdit with i_start=20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/myImage2.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+            
+          </div>
+        
+          <div class="body-text">As you can see, as i_start increases, the image becomes more similar to the original image.</div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.7.2: Inpainting</div>
+        <div class="project-details-content">
+          <div class="body-text">We can make this more intersting by implementing inpainting! With \( x_t \gets m x_t + (1 - m) \text{forward}(x_{\text{orig}}, t) \), we can make a mask and generate a new image for that area.</div>
+          
+          <br>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original Image.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/rocketmask.png"></image>
+              <span class="image-caption center-text">Mask</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/rocekt+mask.png"></image>
+              <span class="image-caption center-text">To Replace</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 Rocket with inpaint 1.png"></image>
+              <span class="image-caption center-text">Result</span>
+            </div>
+          </div>
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original Image.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/maskCam.png"></image>
+              <span class="image-caption center-text">Mask</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/mask+Cam.png"></image>
+              <span class="image-caption center-text">To Replace</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Inpainting test im.png"></image>
+              <span class="image-caption center-text">Result</span>
+            </div>
+          </div>
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/me.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/maskme.png"></image>
+              <span class="image-caption center-text">Mask</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/me + mask.png"></image>
+              <span class="image-caption center-text">To Replace</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Inpainting Me.png"></image>
+              <span class="image-caption center-text">Result</span>
+            </div>
+          </div>
+
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/berkeley.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/bermask.png"></image>
+              <span class="image-caption center-text">Mask</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/berk + mask.png"></image>
+              <span class="image-caption center-text">To Replace</span>
+            </div>
+            <div class="gallery-image-container one-fifth-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Inpainting ber.png"></image>
+              <span class="image-caption center-text">Result</span>
+            </div>
+            
+          </div>
+         
+
+          <div class="body-text">It is interesting to see how the generated image adapts color and image on the background and creates seamless result image!</div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.7.3: Text-Conditional Image-to-Image Translation</div>
+        <div class="project-details-content">
+          <div class="body-text">For this part, we are going to use SDEdit, but with a projection by a text promt. </div>
+          
+          <br>
+
+          <div class="body-text">For these images, I used the text prompt embedding "a rocket ship."</div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 Rocket 1.png"></image>
+              <span class="image-caption center-text">Rocket at noise level 1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 Rocket 2.png"></image>
+              <span class="image-caption center-text">Rocket at noise level 3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 Rocket 3.png"></image>
+              <span class="image-caption center-text">Rocket at noise level 5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 Rocket 4.png"></image>
+              <span class="image-caption center-text">Rocket at noise level 7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 Rocket 5.png"></image>
+              <span class="image-caption center-text">Rocket at noise level 10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 Rocket 6.png"></image>
+              <span class="image-caption center-text">Rocket at noise level 20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/Original Image.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+          </div>
+          
+          <div class="body-text">For these images, I used the text prompt embedding "a man wearing a hat."</div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 hat 1.png"></image>
+              <span class="image-caption center-text">Hat at noise level 1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 hat 2.png"></image>
+              <span class="image-caption center-text">Hat at noise level 3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 hat 3.png"></image>
+              <span class="image-caption center-text">Hat at noise level 5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 hat 4.png"></image>
+              <span class="image-caption center-text">Hat at noise level 7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 hat 5.png"></image>
+              <span class="image-caption center-text">Hat at noise level 10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 hat 6.png"></image>
+              <span class="image-caption center-text">Hat at noise level 20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/me.png"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+          </div>
+         
+          <div class="body-text">For these images, I used the text prompt embedding "a lithograph of waterfalls."</div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 satwater 1.png"></image>
+              <span class="image-caption center-text">Waterfalls at noise level 1</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 satwater 2.png"></image>
+              <span class="image-caption center-text">Waterfalls at noise level 3</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 satwater 3.png"></image>
+              <span class="image-caption center-text">Waterfalls at noise level 5</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 satwater 4.png"></image>
+              <span class="image-caption center-text">Waterfalls at noise level 7</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 satwater 5.png"></image>
+              <span class="image-caption center-text">Waterfalls at noise level 10</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_7_3 satwater 6.png"></image>
+              <span class="image-caption center-text">Waterfalls at noise level 20</span>
+            </div>
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/data/sather.jpg"></image>
+              <span class="image-caption center-text">Original Image</span>
+            </div>
+
+          </div>
+
+        </div>
+        <hr style="width: 100%;">
+
+        <div class="subsubheader-text">1.8: Visual Anagrams</div>
+        <div class="project-details-content">
+          <div class="body-text"> In this part, I created optical illusions with diffusion model. With two text promt embeddings, I created an image that has two contents if flipped upside down.</div>
+
+          <div class="body-text">\[
+            \epsilon_1 = \text{UNet}(x_t, t, p_1) \] \[
+            \epsilon_2 = \text{flip}(\text{UNet}(\text{flip}(x_t), t, p_2)) \] \[
+            \epsilon = \frac{\epsilon_1 + \epsilon_2}{2}
+            \] 
+          </div>
+          
+          <div class="body-text">By using this equation, I was able to get an image that has optical illusions.</div>
+          
+          <br>
+
+          <div class="body-text">Below image is generated with 'an oil painting of people around a campfire' and 'an oil painting of an old man'</div>
+          
+          <div class="project-gallery-content">
+
+            
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_8 fire + old 5.png"></image>
+              <span class="image-caption center-text">an oil painting of people around a campfire</span>
+            </div>
+
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image upside-down" src="../assets/diffusion_result/partA/1_8 fire + old 5.png"></image>
+              <span class="image-caption center-text">an oil painting of an old man</span>
+            </div>
+            
+          </div>
+          
+
+          <div class="body-text">Below image is generated with 'an oil painting of a snowy mountain village' and 'an oil painting of an old man'</div>
+          
+          <div class="project-gallery-content">
+
+            
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_8 snowy + old 5.png"></image>
+              <span class="image-caption center-text">an oil painting of a snowy mountain village</span>
+            </div>
+
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image upside-down" src="../assets/diffusion_result/partA/1_8 snowy + old 5.png"></image>
+              <span class="image-caption center-text">an oil painting of an old man</span>
+            </div>
+            
+          </div>
+
+          <div class="body-text">Below image is generated with 'an oil painting of a snowy mountain village' and 'a man wearing a hat'</div>
+          
+          <div class="project-gallery-content">
+
+            
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_8 snowy + man hat 5.png"></image>
+              <span class="image-caption center-text">an oil painting of a snowy mountain village</span>
+            </div>
+
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image upside-down" src="../assets/diffusion_result/partA/1_8 snowy + man hat 5.png"></image>
+              <span class="image-caption center-text">a man wearing a hat</span>
+            </div>
+            
+          </div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">1.9: Hybrid Image</div>
+        <div class="project-details-content">
+          <div class="body-text"> Similar to previous part, we can create a composite noise estimate with two text promts which then can be combined with low frequencies noise estimate and high frequencies noise estimate. With closer look, we should be able to see the first text embedding and far away for the second text embedding.</div>
+
+          <div class="body-text">\[
+            \epsilon_1 = \text{UNet}(x_t, t, p_1) \] \[
+            \epsilon_2 = \text{UNet}(x_t, t, p_2) \] \[
+            \epsilon = f_{\text{lowpass}}(\epsilon_1) + f_{\text{highpass}}(\epsilon_2)
+            \] 
+          </div>
+          
+          <div class="body-text">By doing so, I was able to get an image that contains two different text promt embeddings. For gaussian blur, I used 33 for kernel size and 2 for sigma.</div>
+
+          
+          <div class="body-text">Below image is generated with 'a lithograph of a skull' and 'a lithograph of waterfalls'</div>
+          
+          <div class="project-gallery-content">
+
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_10 skull + watefall 4.png"></image>
+              <span class="image-caption center-text">a lithograph of a skull</span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_10 skull + watefall 4.png"></image>
+              <span class="image-caption center-text">a  lithograph of waterfalls</span>
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="body-text">Below image is generated with 'a rocket ship' and 'a pencil'</div>
+          
+          <div class="project-gallery-content">
+
+            
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_10 rocket + pencil 5.png"></image>
+              <span class="image-caption center-text">a rocket ship</span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_10 rocket + pencil 5.png"></image>
+              <span class="image-caption center-text">a pencil</span>
+            </div>
+            
+          </div>
+
+          <div class="body-text">Below image is generated with 'a lithograph of a skull' and 'an oil painting of people around a campfire'</div>
+          
+          <div class="project-gallery-content">
+
+            
+            <div class="gallery-image-container one-seventh-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partA/1_10 skull + fire people 4.png"></image>
+              <span class="image-caption center-text">a lithograph of a skull</span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image " src="../assets/diffusion_result/partA/1_10 skull + fire people 4.png"></image>
+              <span class="image-caption center-text">an oil painting of people around a campfire</span>
+            </div>
+            
+          </div>
+          
+        </div>
+        <hr style="width: 100%;">
+
+
+
+
+
+
+
+
+
+        <div class="subheader-text">Part B: Diffusion Models from Scratch!</div>
+        <div class="subsubheader-text">1: Implementing the UNet + Training + Out-of-Distribution Testing</div>
+
+        <div class="project-details-content">
+          <div class="body-text"> In previous part, I utilized Unet to generate and denoise image. In this part, I will be implementing the Unet. </div>
+
+          
+          <div class="body-text">In order to fully implement the Unet architecture, following needs to be implemented:</div>
+          <div class="body-text">Conv, DownConv, UpConv, Flatten, UnFlatten, ConvBlock, DownBlock, UpBlock </div>
+          
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container">
+              <image class="gallery-image" src="../assets/diffusion_result/others/unetarch.png"></image>
+              <span class="image-caption center-text">Unconditional Unet (source: https://inst.eecs.berkeley.edu/~cs180/fa24/hw/proj5/partb.html)</span>
+            </div>
+          </div>
+          
+          <div class="body-text">After implementing the Unet, I made some helper functions to train this model. I made functions for displaying images, adding noise to bathes of images and normalizing the images.</div>
+
+          <div class="body-text">Image below is images with various noise level per sigma:</div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/noiseNumber.png"></image>
+              <span class="image-caption center-text">Varying levels of noise on MNIST digits</span>
+            </div>
+          </div>
+
+          <div class="body-text">For training the model, I used 128 for the number of hidden state and 256 for batch size of MNIST dataset. This allowed to optimally utilizes GPU while maintaining stable gradient for the dataset. To ensure faster and efficient training, I made all operations performed on the GPU. For loss funciton and optimzer, I used MSELoss and Adam. Additionally, I incorporated autocast for mixed precision training which reduced the memory usage and speed up computations.</div>
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/unetlossgraph.png"></image>
+              <span class="image-caption center-text">Training Loss Curve</span>
+            </div>
+          </div>
+          <div class="body-text">I was able to get optimal loss curve and here are the result after 1st epoch abd 5th epoch for sigma = 0.5 </div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/1sig05e1.png"></image>
+              <span class="image-caption center-text">Results on digits from the test set after 1 epoch of training</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/1sig05e5.png"></image>
+              <span class="image-caption center-text"> Results on digits from the test set after 5 epochs of training</span>
+            </div>
+          </div>
+            
+          <div class="body-text">As you can see epoch 5 has much better result than epoch 1. Numbers are clear and has no gray artifacts.</div>
+          <br>
+          <div class="body-text">Our model is now clearly able to perform well on sigma=0.5. To see how it perform on other noise levels, I tested on sigma that wasn't trained on. I used [0, 0.2, 0.4, 0.5, 0.6, 0.8, 1]</div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/result.png"></image>
+              <span class="image-caption center-text">Results on digits from the test set with varying noise levels</span>
+            </div>
+          </div>
+
+          <div class="body-text">As you can see, up to sigma=0.6, it can denoise the image properly. Beyond that, it struggles, though it still manages to some extent, but the result is unclear and contains gray artifacts.</div>
+        </div>
+
+
+
+
+        <hr style="width: 100%;">
+
+
+
+        <div class="subsubheader-text">2.1 - 2.3: Adding Time Conditioning to UNet + Training the UNet + Sampling from the UNet</div>
+
+        <div class="project-details-content">
+          <div class="body-text"> In previous part, I implemented Unconditional Unet and for this part I will implement Time Conditioned Unet (DDPM)</div>
+          
+          <div class="body-text">To add the Time Conditioning on the current Unet, we can simply add FCBlock which we will use it to inject the conditioning signal.</div>
+          
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container">
+              <image class="gallery-image" src="../assets/diffusion_result/others/condunetfig.png"></image>
+              <span class="image-caption center-text">Time Conditioned Unet (source: https://inst.eecs.berkeley.edu/~cs180/fa24/hw/proj5/partb.html)</span>
+            </div>
+          </div>
+          
+          <div class="body-text">After implementing the Unet, I made some helper functions to train this model. I made functions for displaying images, adding noise to bathes of images and normalizing the images.</div>
+          
+          <div class="body-text">Previously, our loss function was calculating bewteen predicted denoised image and actual images. For our second part, we want our model to predict noisy images by doing \(L = \mathbb{E}_{z,x} \| \epsilon_\theta(x_t, t) - \epsilon \|^2 \) where \( \epsilon \) ~ \( N(1, 0) \)  and \( \epsilon_\theta(x_t, t) \) is prediected noise. </div>
+
+          <div class="body-text"> With this, we will denoise the image \(x_t\) iteratively to get better result:</div>
+          \[
+          x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon
+          \]
+          
+
+          <div class="body-text">As for training the model, we randomly pick a image using torch.randn and random t (time). Then, we denoise by predict noise in \(x_t\) and we repeat the process until we get reasonable results.</div>
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/timeunetgraph.png"></image>
+              <span class="image-caption center-text">Time-Conditioned UNet training loss curve</span>
+            </div>
+          </div>
+
+          <div class="body-text">After training the model, we need can finally get predicted images.</div>
+          <div class="body-text">I used follow algorithm for sampling the results</div>
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-third-width">
+              <image class="gallery-image" src="../assets/diffusion_result/others/algo2_t_only.png"></image>
+              <span class="image-caption center-text">Sampling Algorithm</span>
+            </div>
+          </div>
+
+
+      
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/timee1.png"></image>
+              <span class="image-caption center-text">Samples at Epoch 1</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/timee5.png"></image>
+              <span class="image-caption center-text">Samples at Epoch 5</span>
+            </div>
+          </div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/timee10.png"></image>
+              <span class="image-caption center-text">Samples at Epoch 10</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/timee15.png"></image>
+              <span class="image-caption center-text">Samples at Epoch 15</span>
+            </div>
+          </div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/timee20.png"></image>
+              <span class="image-caption center-text">Samples at Epoch 20</span>
+            </div>
+          </div>
+            
+          <div class="body-text">As you can see, the results get better and better as the number of epochs increases during model training. At epoch 5, we can see some numbers present, but they are not clear enough; however, after epoch 20, we can clearly see that some numbers have been formed.</div>
+          
+          <div class="body-text">Here are gifs for better visualization:</div>
+
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif1" src="../assets/diffusion_result/partB/timeunet1.gif" alt="Samples at Epoch 1">
+              <span class="image-caption center-text">Samples at Epoch 1</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif10" src="../assets/diffusion_result/partB/timeunet10.gif" alt="Samples at Epoch 10">
+              <span class="image-caption center-text">Samples at Epoch 10</span>
+            </div>
+          </div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif15" src="../assets/diffusion_result/partB/timeunet15.gif" alt="Samples at Epoch 15">
+              <span class="image-caption center-text">Samples at Epoch 15</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif20" src="../assets/diffusion_result/partB/timeunet20.gif" alt="Samples at Epoch 20">
+              <span class="image-caption center-text">Samples at Epoch 20</span>
+            </div>
+          </div>
+          
+          
+          <br>
+        
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">2.4 - 2.5: Adding Class-Conditioning to UNet + Sampling from the Class-Conditioned UNet</div>
+        <div class="project-details-content">
+          <div class="body-text"> In previous part, I implemented Unconditional Unet and Time Conditioned Unet. In this part, I will add class-conditioning to the Unet.</div>
+          
+          <div class="body-text">By adding class conditioning, we can get better image generation and control on what we want to generate. For the sake of demonstration, I set it to generate digits 0 - 9.</div>
+          <div class="body-text">In order to implement this, we need to add a 2 more FCBlocks which is class conditioning vector 'c'. We need to make this one-hot vector as well. Also we implemented dropout where by default 0.1 class conditioning gets dropped. </div>
+          
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container one-width">
+              <image class="gallery-image" src="../assets/diffusion_result/partB/classunetgraph.png"></image>
+              <span class="image-caption center-text">Class-conditioned UNet training loss curve</span>
+            </div>
+          </div>
+          
+          <div class="body-text">After getting decent loss curve, I implemented sampling for class conditioned Unet with following alogorithms. We used 0.1 for \(p_uncond\) and 5.0 for \( \gamma \)</div>
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <image class="gallery-image" src="../assets/diffusion_result/others/algo4_c.png"></image>
+              <span class="image-caption center-text">Sampling from class-conditioned UNet (source: https://inst.eecs.berkeley.edu/~cs180/fa24/hw/proj5/partb.html)</span>
+            </div>
+          </div>
+
+          <div class="body-text">Here are samples that I got:</div>
+
+
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif1" src="../assets/diffusion_result/partB/classe1.png" alt="Samples at Epoch 1">
+              <span class="image-caption center-text">Samples at Epoch 1</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif10" src="../assets/diffusion_result/partB/classe5.png" alt="Samples at Epoch 10">
+              <span class="image-caption center-text">Samples at Epoch 5</span>
+            </div>
+          </div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif10" src="../assets/diffusion_result/partB/classe10.png" alt="Samples at Epoch 10">
+              <span class="image-caption center-text">Samples at Epoch 10</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif15" src="../assets/diffusion_result/partB/classe15.png" alt="Samples at Epoch 15">
+              <span class="image-caption center-text">Samples at Epoch 15</span>
+            </div>
+            
+          </div>
+
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif20" src="../assets/diffusion_result/partB/classe20.png" alt="Samples at Epoch 20">
+              <span class="image-caption center-text">Samples at Epoch 20</span>
+            </div>
+            
+          </div>
+          
+          
+          <div class="body-text">Here are gifs for better visualization:</div>
+
+          
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif1" src="../assets/diffusion_result/partB/classunet1.gif" alt="Samples at Epoch 1">
+              <span class="image-caption center-text">Samples gif at Epoch 1</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif10" src="../assets/diffusion_result/partB/classunet10.gif" alt="Samples at Epoch 10">
+              <span class="image-caption center-text">Samples gif at Epoch 10</span>
+            </div>
+          </div>
+          <div class="project-gallery-content">
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif15" src="../assets/diffusion_result/partB/classunet15.gif" alt="Samples at Epoch 15">
+              <span class="image-caption center-text">Samples gif at Epoch 15</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img class="gallery-image" id="diffgif20" src="../assets/diffusion_result/partB/classunet20.gif" alt="Samples at Epoch 20">
+              <span class="image-caption center-text">Samples gif at Epoch 20</span>
+            </div>
+          </div>
+
+        </div>
+        <hr style="width: 100%;">
+        <div class="subsubheader-text">Reflection</div>
+        <div class="body-text">This was one of the most difficult projects I have worked on because I did not have much experience with diffusion models and Convolutional Neural Networks. However, it was very interesting to see the foundation of current generative artificial intelligence!</div>
+
+          <hr style="width: 100%;">
+        <div class="subsubheader-text">Bells and Whistles</div>
+        <div class="body-text">I did gif for Bells & Whistles</div>
+
+        
+
+          <hr style="width: 100%;">
+          <div class="subheader-text">Acknowledgment</div>
+          <div class="body-text">
+            I used the <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template">Unemployables Portfolio Template</a> for this website.
+          </div>
+          
+          
+      </div>
+
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/twitter.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:whitevans.eth@gmail.com">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>

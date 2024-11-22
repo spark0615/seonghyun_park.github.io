@@ -176,12 +176,25 @@
         <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
         <span class="subheader-text">Projects</span>
 
-        
+        <div class="exp-card">
+          <img src="./assets/diffusion_result/partB/classunet20.gif" class="exp-image">
+          <div class="exp-card-text-container">
+            <div class="subheader-text project-title">Diffusion Models</div>
+            <div class="body-text exp-card-text">
+              This project focused on exploring the capabilities of diffusion models using DeepFloyd. I implemented the forward diffusion process to add noise to images and designed sampling loops to iteratively denoise and generate realistic outputs. Tasks included inpainting, optical illusions, and hybrid images by leveraging noise estimates conditioned on text prompts. Classifier-Free Guidance was used to enhance image quality by combining conditional and unconditional noise estimates. Additionally, I experimented with text-conditional image translation and created visual illusions that change when flipped. Through these tasks, I gained hands-on experience with diffusion models, UNet architectures, and advanced generative techniques.
+              I also implemented and trained a diffusion model for generative image tasks using the MNIST dataset. I began by designing a UNet architecture to denoise images, mapping noisy inputs back to clean images through an L2 loss. The model was extended with time-conditioning by embedding timesteps, enabling iterative denoising for higher-quality outputs. I further enhanced the model with class-conditioning, allowing the generation of specific digits and visualizing results at various noise levels and epochs. This project provided hands-on experience with diffusion models, UNet architectures, and balancing image quality with diversity in generative AI.
+            </div>
+          </div>
+          <a class="button" href="./project-pages/diffusion.html">
+            <span class="button-text">Project Details</span>
+            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+          </a>
+        </div>
 
         <div class="exp-card">
           <img src="./assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png" class="exp-image">
           <div class="exp-card-text-container">
-            <div class="subheader-text project-title">Imaging Processing: Images to a Mosaic</div>
+            <div class="subheader-text project-title">Imaging Processing: Images to a Mosaic A</div>
             <div class="body-text exp-card-text">
      
               This project focuses on creating seamless image mosaics by stitching multiple photos together using homographies. To achieve this, I first captured multiple overlapping images from the same scene while keeping the camera's center of projection fixed and rotating it slightly between shots. This ensured significant field-of-view overlap, making it easier to align the images accurately. After acquiring the images, I used a homography-based transformation to align them.
@@ -201,7 +214,7 @@
         <div class="exp-card">
           <img src="./assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png" class="exp-image">
           <div class="exp-card-text-container">
-            <div class="subheader-text project-title">Imaging Processing: Images to a Mosaic</div>
+            <div class="subheader-text project-title">Imaging Processing: Images to a Mosaic B</div>
             <div class="body-text exp-card-text">
      
               This project focuses on creating seamless image mosaics by stitching multiple photos together using homographies. To achieve this, I first captured multiple overlapping images from the same scene while keeping the camera's center of projection fixed and rotating it slightly between shots. This ensured significant field-of-view overlap, making it easier to align the images accurately. After acquiring the images, I used a homography-based transformation to align them.
