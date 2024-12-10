@@ -179,6 +179,20 @@
         <div class="exp-card">
           <img src="./assets/diffusion_result/partB/classunet20.gif" class="exp-image">
           <div class="exp-card-text-container">
+            <div class="subheader-text project-title">AR, LightField Camera, Facial Deteciton with NN</div>
+            <div class="body-text exp-card-text">
+              Please click "Project Details"!
+            </div>
+          </div>
+          <a class="button" href="./project-pages/final_project.html">
+            <span class="button-text">Project Details</span>
+            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+          </a>
+        </div>
+
+        <div class="exp-card">
+          <img src="./assets/diffusion_result/partB/classunet20.gif" class="exp-image">
+          <div class="exp-card-text-container">
             <div class="subheader-text project-title">Diffusion Models</div>
             <div class="body-text exp-card-text">
               This project focused on exploring the capabilities of diffusion models using DeepFloyd. I implemented the forward diffusion process to add noise to images and designed sampling loops to iteratively denoise and generate realistic outputs. Tasks included inpainting, optical illusions, and hybrid images by leveraging noise estimates conditioned on text prompts. Classifier-Free Guidance was used to enhance image quality by combining conditional and unconditional noise estimates. Additionally, I experimented with text-conditional image translation and created visual illusions that change when flipped. Through these tasks, I gained hands-on experience with diffusion models, UNet architectures, and advanced generative techniques.
@@ -194,7 +208,7 @@
         <div class="exp-card">
           <img src="./assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png" class="exp-image">
           <div class="exp-card-text-container">
-            <div class="subheader-text project-title">Imaging Processing: Images to a Mosaic A</div>
+            <div class="subheader-text project-title">Imaging Processing: Images to a Mosaic</div>
             <div class="body-text exp-card-text">
      
               This project focuses on creating seamless image mosaics by stitching multiple photos together using homographies. To achieve this, I first captured multiple overlapping images from the same scene while keeping the camera's center of projection fixed and rotating it slightly between shots. This ensured significant field-of-view overlap, making it easier to align the images accurately. After acquiring the images, I used a homography-based transformation to align them.
@@ -202,25 +216,6 @@
               Once the homographies were computed, I developed a warping function to transform images, applying interpolation to handle aliasing issues. Testing my homography implementation, I performed image rectification, where I used a single image of a known rectangular object (like a painting) and corrected its perspective to make it appear as a perfect rectangle.
               I created the image mosaic by blending the aligned images using weighted averaging. For a more refined result, I implemented blending techniques like Laplacian pyramids to minimize ghosting and edge artifacts. The result was a smooth and seamless mosaic, showcasing my skills in image processing, linear algebra, and algorithm development. This project highlights my ability to manipulate images programmatically, providing accurate alignments and realistic blends for various visual computing applications.
               Additionally, I aimed to create a robust image panorama by implementing feature-based image matching and stitching, inspired by the paper “Multi-Image Matching using Multi-Scale Oriented Patches” by Brown et al., with several simplifications. Using the Harris Corner Detector, we first identify interest points in each image that are likely to be stable features in overlapping areas. Next, we apply Adaptive Non-Maximal Suppression (ANMS) to ensure these interest points are spatially distributed, retaining only the strongest and most distinctive ones. For each key point, we then extract a feature descriptor by sampling axis-aligned 8x8 patches from a larger 40x40 window, followed by bias/gain normalization to create robust and unique descriptors. To match features across images, Lowe’s ratio test is employed, filtering for the most distinctive feature pairs. Finally, we use a 4-point RANSAC algorithm to compute a homography matrix, aligning the images based on these matched points to produce a seamless panorama. This process combines interest point detection, descriptor extraction, feature matching, and homography estimation to create a visually cohesive stitched image.
-              
-            </div>
-          </div>
-          <a class="button" href="./project-pages/mosaic_project.html">
-            <span class="button-text">Project Details</span>
-            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-          </a>
-        </div>
-
-        <div class="exp-card">
-          <img src="./assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png" class="exp-image">
-          <div class="exp-card-text-container">
-            <div class="subheader-text project-title">Imaging Processing: Images to a Mosaic B</div>
-            <div class="body-text exp-card-text">
-     
-              This project focuses on creating seamless image mosaics by stitching multiple photos together using homographies. To achieve this, I first captured multiple overlapping images from the same scene while keeping the camera's center of projection fixed and rotating it slightly between shots. This ensured significant field-of-view overlap, making it easier to align the images accurately. After acquiring the images, I used a homography-based transformation to align them.
-              The core of the project involved writing a function to compute homographies between image pairs. I manually selected corresponding points from each pair and set up a system of linear equations to solve for the homography matrix. Using more than four correspondences allowed for robust solutions via least-squares minimization, reducing errors from noise.
-              Once the homographies were computed, I developed a warping function to transform images, applying interpolation to handle aliasing issues. Testing my homography implementation, I performed image rectification, where I used a single image of a known rectangular object (like a painting) and corrected its perspective to make it appear as a perfect rectangle.
-              Finally, I created the image mosaic by blending the aligned images using weighted averaging. For a more refined result, I implemented blending techniques like Laplacian pyramids to minimize ghosting and edge artifacts. The result was a smooth and seamless mosaic, showcasing my skills in image processing, linear algebra, and algorithm development. This project highlights my ability to manipulate images programmatically, providing accurate alignments and realistic blends for various visual computing applications.
               
             </div>
           </div>
