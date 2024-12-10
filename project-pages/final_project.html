@@ -1,0 +1,334 @@
+
+
+<!-- 
+  IMPORTANT! 
+  
+  Keep this file unchanged to use as a template for all future project pages. 
+
+  For every new project you add to your portfolio, make a copy of this file in the
+  'project-pages' folder with a name related to the project.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <!-- 
+      TODO
+
+      Upload your Unemployable (or whatever photo you like) to the assets/images folder
+      and change the name of the image below to match the uploaded one
+
+      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+
+      This should be the same across all pages.
+     -->
+     <link rel="icon" href="../assets/images/1311.png" />
+     <title>Unemployables Portfolio</title>
+    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <!-- 
+          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
+
+          (this should be the same across all pages)
+         -->
+        <span class="nav-title">Seonghyun Park</span>
+        <!-- 
+          TODO - Change the email after 'mailto:' to your email address for contact 
+        
+          (this should be the same across all pages)
+        -->
+        <a class="button" href="mailto:spark6015@berkeley.edu">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">AR + Lightfield Camera + Facial Keypoints with Neural Network</div>
+        
+        <br>
+        <hr style="width: 100%;">
+        <br>
+        
+        <div class="subheader-text ">Poor Man's Augmented Reality</div>
+
+        <div class="subheader-text ">Overview</div>
+
+        <div class="body-text">
+          In this AR project, I will explore ways to capture 2D points in a video, convert them into 3D coordinates, and project an object on top of them.
+        </div>
+        <br>
+        <div class="subheader-text ">Keypoints with known 3D world coordinates</div>
+        <div class="body-text">
+          In order to find the sequence of 2D points in a video, we must define coordinates. There are various ways of obtaining these keypoints. I manually found coordinates for those keypoints. Then I measured the length, width, and height of its box and turned each one of them into 3D coordinates. First, I defined 20 key points and set point 0 as origin for 3D coordinates.
+        </div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/keypoints.png"></image>
+            <span class="image-caption center-text">Keypoints</span>
+          </div>
+        </div>
+        
+        <br>
+        <div class="subheader-text ">Propogating Keypoints to other Images in the Video</div>
+        
+        <div class="body-text">
+          There are several ways to propagate points from the first frame to subsequent frames. I chose to use the Harris Corner Detector as I drew a checker pattern on the box and thought it would work well. So for each frame, even though it is not using the previous frame's key points, it is able to detect corners.
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <video class="gallery-image" width="640" height="360" controls>
+              <source src="../assets/final_project_result/harris.mp4" type="video/mp4">
+            </video>
+            <span class="image-caption center-text">Keypoints</span>
+          </div>
+        </div>
+        <br>
+        <div class="body-text">
+          Next, as you may have noticed, there are too many points that are not related to the box. So I sample points that have high Harris matrix values; otherwise, I discard them. After that process, it looks much better but is still not using the previous frame's coordinates.
+        </div>
+        <br>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <video class="gallery-image" width="640" height="360" controls>
+              <source src="../assets/final_project_result/harrisfilter.mp4" type="video/mp4">
+            </video>
+            <span class="image-caption center-text">Keypoints after Sampling</span>
+          </div>
+        </div>
+
+        <div class="body-text">
+          It captures corners much better, and they are something we can use. So, the next step I took was to calculate the cost using the Euclidean distance between the previous coordinates and the current coordinates. I set a threshold to determine if the distance was too far away; if it was, I discarded it. After this process, it properly uses the previous frame's coordinates and propagates the correct next key points. Point 5 and 14 were lost along the way, but we were able to get other coordinates properly. Also, I colored the origin point to blue. 
+        </div>
+        <br>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <video class="gallery-image" width="640" height="360" controls>
+              <source src="../assets/final_project_result/match.mp4" type="video/mp4">
+            </video>
+            <span class="image-caption center-text">Matching keypoints</span>
+          </div>
+        </div>
+
+        <br>
+        <div class="subheader-text ">Calibrating the Camera</div>
+        <div class="body-text">
+          Now that we have both continuous 2D coordinates and 3D coordinates, we map the 3D points in homogeneous coordinates to 2D image points. Using the matrix below, we can solve the system of equations. By applying least squares, we obtain the projection matrix to calibrate the camera.
+        </div>
+        
+        <div class="body-text">
+          \[ \begin{bmatrix}
+            u \\
+            v \\
+            1 \end{bmatrix}
+
+            \sim
+
+            \begin{bmatrix}
+            m_{11} & m_{12} & m_{13} & m_{14} \\
+            m_{21} & m_{22} & m_{23} & m_{24} \\
+            m_{31} & m_{32} & m_{33} & m_{34}
+            \end{bmatrix}
+
+            \cdot
+
+            \begin{bmatrix}
+            X \\
+            Y \\
+            Z \\
+            1 \end{bmatrix}
+          \]
+        </div>
+        
+        
+        <div class="subheader-text ">Projecting a cube in the Scene</div>
+        <div class="body-text">          
+          We now have 3D coordinates, 2D key points for every frame, and a projection matrix. With these, I projected a cube on top of the box.
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <video class="gallery-image" width="640" height="360" controls>
+              <source src="../assets/final_project_result/result.mp4" type="video/mp4">
+            </video>
+            <span class="image-caption center-text">Result</span>
+          </div>
+        </div>
+        
+        <hr style="width: 100%;">
+
+        <div class="subheader-text ">Lightfield Camera</div>
+
+        <div class="subheader-text ">Overview</div>
+
+        <div class="body-text">
+          In this project, we will explore ways to achieve complex effects using shifting and averaging, resulting in real light field data.
+        </div>
+        <br>
+        <div class="subheader-text "> Depth Refocusing</div>
+        <div class="body-text">
+          We first get the data from Stanford Light Field Archive. The set of images are taken in different position with slight different angles, but I used one that are recified and cropped. This essentially enables refocusing and aperture adjustment by capturing mutliple images on a grid perpendicular to the optical axis. We will show aperture adjustment in later.
+        </div>
+
+        <div class="body-text">
+          For each image, we compute a shift vector based on depth of focus and apply the shift to achieve the target depth.
+        </div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/chess.png"></image>
+            <span class="image-caption center-text">Sample Image</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/Refocused a=-3.0.png"></image>
+            <span class="image-caption center-text">Near Focus</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/Refocused a=0.5.png"></image>
+            <span class="image-caption center-text">Far Focus</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/refocus.gif"></image>
+            <span class="image-caption center-text">Gif</span>
+          </div>
+        </div>
+
+        
+        <br>
+        <div class="subheader-text ">Aperture Adjustment</div>
+        
+        <div class="body-text">
+          This adjustment can be done by varying the light field images used for averaging. This implementation is relatively simpler compared to the previous section. All we need to do is take fewer images by checking with the radius. Additionally, I used (8, 8) as the center of the image. As you can see, as the aperture number increases, the background blurs, focusing on a specific part of the image.
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/treasure.png"></image>
+            <span class="image-caption center-text">Sample Image</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/Aperture r=0.png"></image>
+            <span class="image-caption center-text">Small Aperture</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/Aperture r=7.png"></image>
+            <span class="image-caption center-text">Large Aperture</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/ezgif.com-animated-gif-maker-2.gif"></image>
+            <span class="image-caption center-text">Gif</span>
+          </div>
+        </div>
+
+        <br>
+        <div class="subheader-text ">Bells and Whistles</div>
+        
+        <div class="body-text">
+          For the Lighted Camera B&W, I implemented interactive refocusing. When you run the code, it will prompt you to pinpoint a focus point. Then, it calculates the optimal depth level and uses refocusing to adjust the focus accordingly. To obtain the correct depth, I calculate the point's coordinates and convert them into the corresponding depth level. I then used the previous implementation to achieve the correct focus.
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/top.png"></image>
+            <span class="image-caption center-text">Clicked Top</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/interactive pt=[(696.6774193548385, 138.6935483870966)].png"></image>
+            <span class="image-caption center-text">Result</span>
+          </div>
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/mid.png"></image>
+            <span class="image-caption center-text">Clicked Middle</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/interactive pt=[(518.8548387096773, 367.3225806451611)].png"></image>
+            <span class="image-caption center-text">Result</span>
+          </div>
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/bottom.png"></image>
+            <span class="image-caption center-text">Clicked Bottom</span>
+          </div>
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/interactive pt=[(710.7903225806451, 590.3064516129031)].png"></image>
+            <span class="image-caption center-text">Result</span>
+          </div>
+        </div>
+
+        <hr style="width: 100%;">
+        <div class="subheader-text">Acknowledgment</div>
+        <div class="body-text">
+          I used the <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template">Unemployables Portfolio Template</a> for this website.
+        </div>
+          
+          
+      </div>
+
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+        <image src="../assets/icons/twitter.svg" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:whitevans.eth@gmail.com">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
