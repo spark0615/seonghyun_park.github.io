@@ -71,6 +71,268 @@
         <hr style="width: 100%;">
         <br>
         
+        <div class="subheader-text ">Facial Keypoints with Neural Network</div>
+        <div class="subheader-text ">Overview</div>
+        <div class="body-text">
+          In this project, we will explore ways to detect facial keypoints using neural network
+        </div>
+        <br>
+        <div class="subheader-text ">Part 1: Nose Tip Detection</div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part1_1.png"></image>
+            <span class="image-caption center-text">lr=1e^-3, filter_size=3</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part1_2.png"></image>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part1_3.png"></image>
+            <span class="image-caption center-text">lr=5e^-3, filter_size=5</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part1_4.png"></image>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part1_5.png"></image>
+          </div>
+        </div>
+        
+        <div class="body-text">
+          The second approach I used results in higher loss and the prediction performance is worse than the first approach. As we can tell from the image outcome, the predicted points and the ground truth align a lot closer in approach 1 than in approach 2.
+        </div>
+        
+        <div class="body-text">
+          But no matter which approach it is, there are still some failure cases. I suspect that the varying orientations of the faces make the nose tip harder to detect, though even some forward-facing faces also struggle to be detected easily.
+        </div>
+
+
+
+
+        <br>
+        <div class="subheader-text ">Part 2: Full Facial Keypoints Detection</div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part2_1.png"></image>
+            <span class="image-caption center-text">Ground truths</span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part2_2.png"></image>
+            <span class="image-caption center-text">Training and validation loss (test loss here)</span>
+          </div>
+        </div>
+
+
+        <br>
+        <div class="body-text">
+          The `FaceCNN` model is a CNN designed for facial recognition or related tasks, accepting single-channel grayscale images as input. It has six convolutional layers with increasing channel depths, starting from 16 and reaching 64. Each convolutional layer uses a kernel size of 3, with varying padding values (3, 2, or 1) to control the output dimensions. After each convolution, a max pooling layer with a kernel size and stride of 2 reduces the spatial dimensions by half. The architecture includes an optional sixth convolutional layer for added complexity. Following the convolutional layers, the output is flattened to a 1D tensor and passed through three fully connected layers, which reduce dimensions sequentially from 256 to 200, 150, and finally 116. The output is reshaped into a `(58, 2)` tensor. ReLU activation functions are applied after each convolution and fully connected layer, except the output. For training, I used a learning rate of 1e^-3 and batch size of 4. 
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part2_3.png"></image>
+            <span class="image-caption center-text">Correct</span>
+          </div>
+        </div>
+
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part2_4.png"></image>
+            <span class="image-caption center-text">Incorrect</span>
+          </div>
+        </div>
+
+        <br>
+        <div class="body-text">
+          I believe the negative predictions occur due to the significant variation in face orientations and additional obstructions in the images. When the model becomes uncertain, it appears to generate an average face as a way to minimize loss.
+        </div>
+        <br>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container one-third-width">
+            <image class="gallery-image" src="../assets/final_project_result/part2_5.png"></image>
+            <span class="image-caption center-text">Filters of the first convolutional layer</span>
+          </div>
+        </div>
+
+        <div class="body-text">
+          We can observe general patterns of light and dark, prompting them to focus on patches or edges in the input image. For instance, Filters 4 specifically highlight prominent features at corners.
+        </div>
+
+        <br>
+        <div class="subheader-text ">Part 3: Train With Larger Dataset</div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_1.png"></image>
+            <span class="image-caption center-text">Ground Truths</span>
+          </div>
+        </div>
+        
+        <div class="body-text">
+          My architecture is a Wide ResNet-50, which is essentially a ResNet-50 with all the internal 3x3 convolution layers doubled in width (i.e., twice the number of filters). The final linear layer has been modified to output 2 × 68 neurons, and it includes the 0.5 bias initialization I mentioned earlier. The model has the average pooling layer at the end.
+
+
+        </div>
+        <div class="body-text">
+          I trained this model using a batch size of 64 and a learning rate of 3e-4 (adjusted from previous runs) for a total of 30 epochs using MSE loss.
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_2.png"></image>
+          </div>
+        </div>
+
+        <div class="body-text">
+          Here are some images from test set:
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_3.png"></image>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_4.png"></image>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_5.png"></image>
+          </div>
+        </div>
+
+        <div class="body-text">
+          Here are some images that we choose to test:
+        </div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_3.png"></image>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_4.png"></image>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part3_5.png"></image>
+          </div>
+        </div>
+
+        <div class="body-text">          
+          The model generally performs well when the face is fully shown and facing right towards the camera (second image). When the face is tilted or partially blocked by something (first and third image), the model doesn't work that well.
+        </div>
+        
+        
+        <div class="subheader-text ">Part 4: Pixelwise Classification</div>
+        <div class="body-text">          
+          The heatmaps generated by the function are based on a Gaussian distribution, with the mean centered at the specified keypoint coordinates \((x_0, y_0)\). The spread of the Gaussian is determined by the standard deviation (\(\sigma\)), which defaults to 8.0, resulting in a variance of 64. Each heatmap is computed using the formula \(\text{heatmap}(x, y) = \exp\left(-\frac{(x - x_0)^2 + (y - y_0)^2}{2\sigma^2}\right)\), ensuring the highest intensity at the keypoint and a smooth decrease with increasing distance. A mesh grid of size \((\text{height}, \text{width})\) is used to calculate the squared Euclidean distance for all grid points relative to the keypoints. The function normalizes each heatmap so that the maximum value is 1 and sets heatmaps corresponding to out-of-bounds keypoints to zero.
+        </div>
+        <br>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/part4_1.png"></image>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/part4_2.png"></image>
+          </div>
+        </div>
+
+        <div class="body-text">          
+          This U-Net model consists of four levels, each containing two convolutional layers with batch normalization and a ReLU activation function, along with a max-pooling layer in the encoder. In the decoder, the max-pooling layers are replaced with up-convolutional layers. The convolutional filter counts for each block are 32, 64, 128, and 256, respectively, with the bottleneck layer using 512 filters. Skip connections link the encoding layers to their corresponding decoding layers. The input to the model is a 3-channel image and the output channel is 68. The model outputs a 68-channel probability heatmap that’s of the same size as the input image.
+        </div>
+
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/part4_3.png"></image>
+            <span class="image-caption center-text">At Epoch 30, Training Loss: 0.0005 - At Epoch 30, Validation Loss: 0.0026</span>
+          </div>
+        </div>
+
+        <div class="body-text">          
+Here are some images from test set:
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/part4_4.png"></image>
+          </div>
+        </div>
+        <div class="body-text">          
+          Here are some images we picked to run some test:
+        </div>
+        
+        <div class="project-gallery-content">
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part44.png"></image>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part45.png"></image>
+          </div>
+          <div class="gallery-image-container quarter-width">
+            <image class="gallery-image" src="../assets/final_project_result/part46.png"></image>
+          </div>
+        </div>
+        <br>
+        <div class="body-text">          
+          The model doesn’t really work when the face is not fully present, as shown in the first image. The model works better when the face is facing more directly to the camera, with less shade and contrasts, as demonstrated by figure2 and 3.
+        </div>
+
+         <br>
+        <div class="subheader-text ">Bells & Whistles</div>
+        <div class="body-text">          
+          For each of the keypoint, instead of using a 2d gaussian, I applied a binary mask with radius of 8. Below is a visual representation of the masks for the first 18 keypoints.
+        </div>
+        <br>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part5_1.png"></image>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <image class="gallery-image" src="../assets/final_project_result/part5_2.png"></image>
+            <span class="image-caption center-text">At Epoch 30, Training Loss: 0.0007
+              - At Epoch 30, Validation Loss: 0.0015
+              </span>
+          </div>
+        </div>
+
+        <div class="project-gallery-content">
+          <div class="gallery-image-container almost-width">
+            <image class="gallery-image" src="../assets/final_project_result/part5_2.png"></image>
+          </div>
+        </div>
+
+
+        <div class="body-text">          
+          This new approach seems to work better than the original 2d gaussian approach, having a lower validation accuracy. (0.0026 compared to 0.0015) We can also tell from the mouth area. The model trained with this approach has better performance around the mouth area.
+        </div>
+
+        
+        <br>
+        <hr style="width: 100%;">
+        <br>
+        <div class="main-title">AR + Lightfield Camera + Facial Keypoints with Neural Network</div>
+        
+        
         <div class="subheader-text ">Poor Man's Augmented Reality</div>
 
         <div class="subheader-text ">Overview</div>
@@ -298,6 +560,7 @@
         </div>
 
         <hr style="width: 100%;">
+
         <div class="subheader-text">Acknowledgment</div>
         <div class="body-text">
           I used the <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template">Unemployables Portfolio Template</a> for this website.

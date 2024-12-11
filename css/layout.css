@@ -236,6 +236,11 @@ body {
       gap: 10px;
     }
 
+    .gallery-image-container.almost-width {
+      width: calc((100% - 16px) / 1.8);
+      margin: 0 auto;
+    }
+
     .gallery-image-container.half-width {
       width: calc((100% - 16px) / 2.5);
       margin: 0 auto;
