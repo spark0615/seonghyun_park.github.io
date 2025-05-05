@@ -15,7 +15,7 @@
      -->
     <link rel="icon" href="./assets/images/1311.png" />
 		<title>Seonghyun's Portfolio</title>
-    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="description" content="Portfolio of Seonghyun Park - Computer Science Student at UC Berkeley">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<link rel="stylesheet" href="./css/layout.css">
@@ -28,480 +28,244 @@
     <!-- NAVBAR -->
     <div class="navbar">
       <a class="nav-title-link" href="./index.html">
-        <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
         <span class="nav-title">@seonghyunpark</span>
-         <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
-        <a class="button" href="mailto:spark6015@berkeley.edu">
-          <span class="button-text">Contact Me</span>
-        </a>
       </a>
+      <div class="nav-links">
+        <a class="button" href="#about">About</a>
+        <a class="button" href="#experience">Experience</a>
+        <a class="button" href="#projects">Projects</a>
+        <a class="button" href="./resume.html">Resume</a>
+        <a class="button" href="mailto:spark6015@berkeley.edu">Contact</a>
+      </div>
     </div>
 
     <!-- MAIN PAGE CONTENT -->
     <div id="main-content">
-
-      <!-- PORTFOLIO HEADER -->
-      <div id="portfolio-header">
-        <div id="portfolio-header-image-container">
-          <!-- 
-            TODO
-
-            - Change the img "src" attribute to point to the Unemployable image you uploaded (or whatever image).
-            - Change the number to point to your Unemployable & replace the OpenSea link with your own
-            - If you aren't using an Unemployable as your image, remove the entire "a" element
-          -->
-          <img src="./assets/images/portrait.jpg" class="portfolio-header-image">
-          <!-- <a class="no-underline" target="_blank" href="https://opensea.io/assets/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/1311">
-            <span class="image-caption">Unemployables #1311</span>
-          </a> -->
-        </div>
-
-          <!-- 
-            TODO
-
-            - Change the main-title to whatver you want
-            - Change the body-text after that to a quick introduction to what you do
-            - Edit the button text if you feel like it. It will link to the projects section below.
-          -->
-        <div id="portfolio-header-text-container">
-            <div class="header-text">
-              <span class="main-title">Hi, I'm Seonghyun!</span> <br>
-              <span class="main-sub-title">Computer Science @ UC Berkeley</span>
-              
-              <div class="body-text">
-                <br>
-                My name is <strong>Seonghyun Park</strong>, a <strong>Computer Science Undergraduate</strong> at the University of California, Berkeley. 
-              </div>
-            </div>
-            <a class="button" href="#industry-experience-section" id="my-work-link">
-              <span class="button-text">Industry Experiences</span> 
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
-            <a class="button" href="#industry-experience-section" id="my-research-link">
-              <span class="button-text">Research Experiences</span> 
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
-            <a class="button" href="#industry-experience-section" id="my-project-link">
-              <span class="button-text">Projects</span> 
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
-            <a class="button" id="my-work-link" href="./resume.html">
-              <span class="button-text">Resume</span> 
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
+      <!-- HERO SECTION -->
+      <div id="hero-section">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="main-title">Hi, I'm Seonghyun Park</h1>
+            <p class="main-sub-title">Computer Science @ UC Berkeley</p>
+            <p class="body-text">Software Engineer specializing in Mixed Reality, Computer Vision, and Full-Stack Development</p>
+          </div>
+          <div class="hero-image">
+            <img src="./assets/images/profile.jpg" alt="Seonghyun Park" class="profile-image">
+          </div>
         </div>
       </div>
 
       <!-- ABOUT SECTION -->
-      <!-- 
-        TODO
-
-        - Change the subheader-text to whatever header you want
-        - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
-      -->
-      <div id="about-section">
-        <span class="subheader-text">My Background / About Me</span>
-        <div class="about-section-content">
-          <div class="body-text">My background in computer science is diverse, software engineering, mixed reality (MR) development, and research. I have experience leading projects and collaborating with cross-functional teams</div>
-          
+      <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <p class="body-text">I'm a Computer Science student at UC Berkeley with a passion for building innovative solutions. My background spans software engineering, mixed reality development, and research. I enjoy leading projects and collaborating with cross-functional teams to create impactful technology.</p>
         </div>
-      </div>
+      </section>
 
-      <div id="my-work-section">
-        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
-        <span class="subheader-text">Industry Experience</span>
-
-        <div class="exp-container">
-
-
-          <div class="exp-card">
-            <img src="./assets/images/snapchat.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Snap Inc.</div>
-              <div class="subtitleheader-text project-title">Augmented Reality Development Extern</div>
-              <div class="body-text exp-card-text">During my externship with Snap Inc., I collaborated closely with the AR development team to create an augmented reality (AR) lens using Snap's Lens Studio software. I conducted data-driven market analysis focusing on the entertainment, sports, and tech sectors to identify opportunities for impactful AR experiences. Additionally, I tested and optimized these AR experiences to ensure they performed optimally across various devices and platforms.</div>
-            </div>
-          </div>
-          <div class="exp-card">
-            <img src="./assets/images/os.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">OrangeShine</div>
-              <div class="subtitleheader-text project-title">Software Engineering Intern</div>
-              <div class="body-text exp-card-text">As a Software Engineering Intern at OrangeShine, I implemented prefetching and indexing strategies using Python and Django, which resulted in up to a 40% improvement in page response times for certain web pages and significantly reduced server load. I developed over five Django-based web applications, utilizing REST APIs for vendors to manage and edit shipment box sizes, with integrated data validation that captured user inputs and synchronized them with a cloud-based SQL database. Furthermore, I played a critical role in upgrading Python and Django across 10+ company applications, modifying existing codebases to align with the latest software versions, thereby enhancing security and performance.</div>
-            </div>
-          </div>
-          <div class="exp-card">
-            <img src="./assets/images/br.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Boram Cooperation</div>
-              <div class="subtitleheader-text project-title">Software Engineering Intern</div>
-              <div class="body-text exp-card-text">In my role as a Software Engineering Intern at Boram Cooperation, I implemented and developed a responsive design framework using Bootstrap, which optimized cross-platform compatibility and performance across desktop, mobile, and tablet devices. This work significantly enhanced user accessibility and interaction. The improvements led to a 25% increase in user satisfaction based on internal reviews, and the revamped website was well-received by staff, ultimately boosting the company’s online presence and accessibility.</div>
-            </div>
-          </div>
-  
-          
-        </div>
-      </div>
-
-      <div id="my-research-section">
-        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
-        <span class="subheader-text">Research Experience</span>
-
-        <div class="exp-container">
-
-
-          <div class="exp-card">
-            <img src="./assets/images/vrlab.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">EECS DOP at UC Berkeley</div>
-              <div class="subtitleheader-text project-title">Software Engineer, Lead Researcher</div>
-              <div class="subtitleheader-text project-title">Advised by Prof. Sanjit Seshia, Postdoc Edward Kim</div>
-              <div class="body-text exp-card-text">I am currently leading one of the group in a research project at the EECS DOP at UC Berkeley, focusing on home-based Mixed Reality Stroke Rehabilitation in collaboration with UCSF and Stanford. In my role, I lead a team of 8 undergraduates to develop a comprehensive MR stroke rehabilitation application for Meta Quest 3. I have implemented several key features, including the creation of training scenarios, recording trajectory points, processing data with Dynamic Time Warping (DTW), and building a network pipeline using ZMQ to transmit patient data and task information to a server. Additionally, I designed and implemented personalized algorithms tailored to patients' range of motion, creating progressively challenging tasks that adapt as patients improve. My work is grounded in thorough literature reviews, ensuring innovation and avoiding redundancy throughout the development process.</div>
-            </div>
-          </div>
-          <div class="exp-card">
-            <img src="./assets/images/lab.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Berkeley Lab (LBNL)</div>
-              <div class="subtitleheader-text project-title">Research Assistant</div>
-              <div class="subtitleheader-text project-title">Advised by Dr. Waqas Khalid</div>
-              <div class="body-text exp-card-text">During my time as an Undergraduate Research Assistant at Lawrence Berkeley National Laboratory, I played a pivotal role in designing an e-beam lithography system using nanotubes, with a focus on cost-effective solutions and improved efficiency. I advanced the development of a lithography simulator by incorporating pathfinding algorithms that increased operational speed by 30%. Additionally, I was involved in testing and evaluating the performance of shooting electrons through nanotubes, utilizing a motor capable of micrometer precision. This fine-tuning of the motor's positioning significantly enhanced the accuracy of the process.</div>
-            </div>
-          </div>
-          
-  
-          
-        </div>
-      </div>
-
-
-
-      <!-- PROJECTS / MY WORK SECTION -->
-      <div id="my-project-section">
-        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
-        <span class="subheader-text">Projects</span>
-
-        <div class="exp-card">
-          <img src="./assets/final_project_result/part5_3.png" class="exp-image">
-          <div class="exp-card-text-container">
-            <div class="subheader-text project-title">AR, LightField Camera, Facial Deteciton with NN</div>
-            <div class="body-text exp-card-text">
-              This project explores advanced computer vision and augmented reality techniques, including facial keypoint detection, 3D point propagation, and light field camera effects. It employs convolutional neural networks (CNNs) to detect facial keypoints with a focus on handling variations in face orientation and occlusion. The project also investigates the conversion of 2D keypoints from video frames into 3D coordinates for augmented reality applications, enabling accurate projection of 3D objects onto real-world scenes. Additionally, it explores light field technologies to achieve depth refocusing and aperture adjustment, offering insights into computational photography. Through these approaches, the project demonstrates the practical integration of neural networks, AR, and light field data processing in creating immersive visual experiences.
-            </div>
-          </div>
-          <a class="button" href="./project-pages/final_project.html">
-            <span class="button-text">Project Details</span>
-            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-          </a>
-        </div>
-
-        <div class="exp-card">
-          <img src="./assets/diffusion_result/partB/classunet20.gif" class="exp-image">
-          <div class="exp-card-text-container">
-            <div class="subheader-text project-title">Diffusion Models, Generating Digits</div>
-            <div class="body-text exp-card-text">
-              This project focused on exploring the capabilities of diffusion models using DeepFloyd. I implemented the forward diffusion process to add noise to images and designed sampling loops to iteratively denoise and generate realistic outputs. Tasks included inpainting, optical illusions, and hybrid images by leveraging noise estimates conditioned on text prompts. Classifier-Free Guidance was used to enhance image quality by combining conditional and unconditional noise estimates. Additionally, I experimented with text-conditional image translation and created visual illusions that change when flipped. Through these tasks, I gained hands-on experience with diffusion models, UNet architectures, and advanced generative techniques.
-              I also implemented and trained a diffusion model for generative image tasks using the MNIST dataset. I began by designing a UNet architecture to denoise images, mapping noisy inputs back to clean images through an L2 loss. The model was extended with time-conditioning by embedding timesteps, enabling iterative denoising for higher-quality outputs. I further enhanced the model with class-conditioning, allowing the generation of specific digits and visualizing results at various noise levels and epochs. This project provided hands-on experience with diffusion models, UNet architectures, and balancing image quality with diversity in generative AI.
-            </div>
-          </div>
-          <a class="button" href="./project-pages/diffusion.html">
-            <span class="button-text">Project Details</span>
-            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-          </a>
-        </div>
-
-        <div class="exp-card">
-          <img src="./assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png" class="exp-image">
-          <div class="exp-card-text-container">
-            <div class="subheader-text project-title">Images to a Mosaic</div>
-            <div class="body-text exp-card-text">
-     
-              This project focuses on creating seamless image mosaics by stitching multiple photos together using homographies. To achieve this, I first captured multiple overlapping images from the same scene while keeping the camera's center of projection fixed and rotating it slightly between shots. This ensured significant field-of-view overlap, making it easier to align the images accurately. After acquiring the images, I used a homography-based transformation to align them.
-              The core of the project involved writing a function to compute homographies between image pairs. I manually selected corresponding points from each pair and set up a system of linear equations to solve for the homography matrix. Using more than four correspondences allowed for robust solutions via least-squares minimization, reducing errors from noise.
-              Once the homographies were computed, I developed a warping function to transform images, applying interpolation to handle aliasing issues. Testing my homography implementation, I performed image rectification, where I used a single image of a known rectangular object (like a painting) and corrected its perspective to make it appear as a perfect rectangle.
-              I created the image mosaic by blending the aligned images using weighted averaging. For a more refined result, I implemented blending techniques like Laplacian pyramids to minimize ghosting and edge artifacts. The result was a smooth and seamless mosaic, showcasing my skills in image processing, linear algebra, and algorithm development. This project highlights my ability to manipulate images programmatically, providing accurate alignments and realistic blends for various visual computing applications.
-              Additionally, I aimed to create a robust image panorama by implementing feature-based image matching and stitching, inspired by the paper “Multi-Image Matching using Multi-Scale Oriented Patches” by Brown et al., with several simplifications. Using the Harris Corner Detector, we first identify interest points in each image that are likely to be stable features in overlapping areas. Next, we apply Adaptive Non-Maximal Suppression (ANMS) to ensure these interest points are spatially distributed, retaining only the strongest and most distinctive ones. For each key point, we then extract a feature descriptor by sampling axis-aligned 8x8 patches from a larger 40x40 window, followed by bias/gain normalization to create robust and unique descriptors. To match features across images, Lowe’s ratio test is employed, filtering for the most distinctive feature pairs. Finally, we use a 4-point RANSAC algorithm to compute a homography matrix, aligning the images based on these matched points to produce a seamless panorama. This process combines interest point detection, descriptor extraction, feature matching, and homography estimation to create a visually cohesive stitched image.
-              
-            </div>
-          </div>
-          <a class="button" href="./project-pages/mosaic_project.html">
-            <span class="button-text">Project Details</span>
-            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-          </a>
-        </div>
-    
-        <div class="exp-card">
-          
-          <img alt="My GIF" id="me_ran" src="./assets/face_morph_result/part3me_ran_sequence.gif" class="exp-image">
-          <div class="exp-card-text-container">
-
-      <script>
-        const gif = document.getElementById('me_ran');
-        gif.addEventListener('load', () => {
-            gif.style.visibility = 'visible'; 
-        });
-
+      <!-- EXPERIENCE SECTION -->
+      <section id="experience" class="section">
+        <h2 class="section-title">Experience</h2>
         
-        gif.addEventListener('animationiteration', () => {
-            resetGif(gif);
-        });
+        <!-- Industry Experience -->
+        <div class="subsection">
+          <h3 class="subsection-title">Industry</h3>
+          <div class="exp-container">
+            <div class="exp-card">
+              <img src="./assets/images/snapchat.png" class="exp-image">
+              <div class="exp-card-text-container">
+                <h4 class="exp-title">Snap Inc.</h4>
+                <p class="exp-subtitle">Augmented Reality Development Extern</p>
+                <p class="exp-text">Developed AR lenses using Lens Studio, conducted market analysis, and optimized AR experiences across devices.</p>
+              </div>
+            </div>
 
-        function resetGif(gifElement) {
-            const src = gifElement.src;
-            gifElement.src = '';  
-            gifElement.src = src;
-        }
+            <div class="exp-card">
+              <img src="./assets/images/os.png" class="exp-image">
+              <div class="exp-card-text-container">
+                <h4 class="exp-title">OrangeShine</h4>
+                <p class="exp-subtitle">Software Engineering Intern</p>
+                <p class="exp-text">Led full-stack development of e-commerce platform using Django and React. Implemented RESTful APIs, optimized database queries, and enhanced frontend performance.</p>
+              </div>
+            </div>
 
-        setInterval(() => resetGif(gif), 5000); 
-    </script>
-            <div class="subheader-text project-title">Imaging Processing: Face Morphing</div>
-            <div class="body-text exp-card-text">
-              I created a face morphing sequence, computed the average face of a population, and generated a caricature of myself. The project began by defining key correspondences between two images: my face and a target face. Using a tool for manually selecting facial keypoints, I marked features like the eyes, nose, mouth, and chin on both images. These keypoints were then used to generate a Delaunay triangulation, ensuring consistent geometry for morphing. This triangulation was calculated at the midway shape between the two images to prevent deformation during the morph.
-Next, I computed the "mid-way face" by averaging the positions of the keypoints and warping both faces into this intermediate shape. Using affine transformations for each triangle, I mapped both images into the average geometry and averaged the colors, creating the mid-way face.
-For the morph sequence, I implemented a function that gradually transitions from my face to the target face across 45 frames. I controlled the shape warping with a warp_frac parameter and the color blending with a dissolve_frac parameter. This resulted in a smooth animation where each frame is a blend of both faces, culminating in a morph from my face to the target face.
-I also computed the average face of a population from a dataset, warping several faces into the average geometry. Additionally, I warped my face into the average face’s geometry and vice versa. Lastly, I created a caricature of myself by extrapolating from the average face, enhancing distinct features of my face. This project deepened my understanding of image processing, affine transformations, and facial geometry, and resulted in a visually compelling series of morphs and caricatures.
-
+            <div class="exp-card">
+              <img src="./assets/images/br.png" class="exp-image">
+              <div class="exp-card-text-container">
+                <h4 class="exp-title">Boram Cooperation</h4>
+                <p class="exp-subtitle">Software Engineering Intern</p>
+                <p class="exp-text">Developed and maintained web applications using modern JavaScript frameworks. Built responsive UIs, implemented authentication systems, and integrated third-party APIs.</p>
+              </div>
             </div>
           </div>
-          <a class="button" href="./project-pages/morph_project.html">
-            <span class="button-text">Project Details</span>
-            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-          </a>
-        </div>
-        
-        <div class="exp-card">
-          <img src="./assets/filter_freq_result/appleorange_blend_4.png" class="exp-image">
-          <div class="exp-card-text-container">
-            <div class="subheader-text project-title">Fun with Filters and Frequencies</div>
-            <div class="body-text exp-card-text">
-              For this project, I explored the use of Gaussian filters and frequency-based operations on images. The primary focus was applying 2D convolution and filters to manipulate images and visualize their effects. The project involved using Gaussian and Laplacian stacks to better understand how these filters operate across different frequency levels.
-  The first part of the project was about applying finite difference operators to images. I used the partial derivatives in the x and y directions to extract edges. After computing the gradient magnitude from the convolved images, I applied thresholding to binarize the result, enhancing the visibility of the edges. To improve the quality of edge detection, I explored the Derivative of Gaussian (DoG) filter, which combined Gaussian smoothing with the finite difference operator, reducing noise while maintaining sharpness in the edges.
-  Next, I explored image sharpening using the unsharp masking technique. This process involved enhancing the edges by subtracting the blurred image from the original and adding back an amplified version of the edges. The results showed improved clarity, especially around high-frequency details, such as sharp edges in the images.
-  I also experimented with hybrid images, where low-pass and high-pass images were combined to create optical illusions. For example, the combination of a low-pass filtered "smile" image and a high-pass filtered "frown" image created a hybrid image that changed its appearance based on the viewer’s distance.
-  Lastly, I generated Gaussian and Laplacian stacks of different images, blending two distinct images, such as an apple and an orange, across different resolution levels to form a single, visually coherent "Orapple" image.
-
-            </div>
-          </div>
-          <a class="button" href="./project-pages/filters_freq_project.html">
-            <span class="button-text">Project Details</span>
-            <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-          </a>
         </div>
 
-        
-          <div class="exp-card">
-            <img src="./assets/colorizing_result/Pyramid SSD Gradient Cropping emir.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Colorizing RGB images</div>
-              <div class="body-text exp-card-text">In this project, I worked on colorizing the Prokudin-Gorskii photo collection by aligning and combining three separate color channel images—Blue, Green, and Red—into a cohesive RGB photograph. My goal was to restore these historical images to their original form by achieving precise alignment.
-                To accomplish this, I used the Sum of Squared Differences (SSD) method to minimize pixel-by-pixel differences between the color channels, which allowed me to achieve accurate image alignment. I also implemented additional techniques such as automatic cropping and edge detection to further enhance the alignment process. The automatic cropping involved analyzing the gradient of each channel to identify and remove insignificant areas that could mislead alignment. For edge detection, I emphasized areas with high gradients, making it easier to detect and align edges accurately.
-                To optimize the search for the best alignment, I utilized a multi-scale pyramid approach. This technique involved progressively blurring and downsampling the image, reducing computational load and improving runtime, especially for large .TIF files.
-                By combining these methods—SSD, automatic cropping, and edge detection—I was able to achieve precise alignment and sharp colorization of the photographs. The final sequence of applying automatic cropping, followed by edge detection, and then SSD, minimized errors and produced a visually accurate result.</div>
+        <!-- Research Experience -->
+        <div class="subsection">
+          <h3 class="subsection-title">Research</h3>
+          <div class="exp-container">
+            <div class="exp-card">
+              <img src="./assets/images/vrlab.png" class="exp-image">
+              <div class="exp-card-text-container">
+                <h4 class="exp-title">EECS DOP at UC Berkeley</h4>
+                <p class="exp-subtitle">Software Engineer, Lead Researcher</p>
+                <p class="exp-text">Leading development of MR stroke rehabilitation application for Meta Quest 3, implementing key features and personalized algorithms.</p>
+              </div>
             </div>
-            <a class="button" href="./project-pages/colorize_project.html">
-              <span class="button-text">Project Details</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
-          </div>
-          
 
-          <div class="exp-card">
-            <img src="./assets/images/vrgame.jpg" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Hand of the Archer</div>
-              <div class="body-text exp-card-text">I developed an immersive VR archery game using Unity and Meta Quest 3, incorporating advanced hand tracking technology to enhance player interaction. In the game, players use hand gestures to control bows and arrows, aiming to defeat monsters that spawn in waves. As the game progresses, each round introduces new challenges by providing stronger powers, such as increased damage and faster arrow speeds, making the gameplay increasingly complex and engaging. This project demonstrates my ability to integrate cutting-edge VR technologies with dynamic game mechanics to create a highly interactive and responsive gaming experience.</div>
+            <div class="exp-card">
+              <img src="./assets/images/lab.png" class="exp-image">
+              <div class="exp-card-text-container">
+                <h4 class="exp-title">Berkeley Lab (LBNL)</h4>
+                <p class="exp-subtitle">Research Assistant</p>
+                <p class="exp-text">Designed e-beam lithography system using nanotubes, improving operational speed by 30% through pathfinding algorithms.</p>
+              </div>
             </div>
           </div>
-
-          <div class="exp-card">
-            <img src="./assets/images/smokesim.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Smoke Simulator</div>
-              <div class="body-text exp-card-text">For this project, I developed a smoke simulator using Three.js, a JavaScript library for 3D rendering. My goal was to explore physical simulations by implementing the Navier-Stokes equations to realistically simulate the behavior of smoke. I focused on creating an interactive and visually appealing simulation that could be rendered in a 3D environment.
-                To achieve this, I simulated smoke by converting particles into a density field and calculating their positions and velocities, incorporating pressure, viscosity, and buoyancy forces to mimic the natural movement of smoke. To visualize the smoke, I used a sprite sheet of 30 cells, which created an animated effect that made the particles appear realistic. I programmed the particles to always face the camera, ensuring a consistent visual experience.
-                The simulator included various scenes, such as a house with smoke emerging from chimneys, where I added collision detection and dynamic opacity, allowing the smoke to interact naturally with the environment. I extensively used Three.js for rendering and animating the 3D scenes, with JavaScript driving the simulation logic and integrating it with the Three.js framework.</div>
-            </div>
-          </div>
-          <div class="exp-card">
-            <img src="./assets/images/BearQueue.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">BearQueue</div>
-              <div class="body-text exp-card-text">At Berkeley, I noticed that the high student-to-faculty ratio led to long waits during office hours, leaving students feeling unsupported and staff frustrated. Recognizing this as an opportunity to improve both student and faculty experiences, I took the initiative to develop a web application to reorganize the office hour process. Understanding that this task would require significant effort, I recruited and led a team of five people to design and implement the application using React for the front end, Java Spring Boot for the back end, and MongoDB for the database.
-                The application allowed students to submit their questions online beforehand, enabling faculty to manage the queue digitally and preview questions in advance. This system eliminated the need for physical sign-up boards, which often resulted in names being erased or overlooked.
-                The result was a significant improvement in the office hour experience. The application reduced incidents of mismanagement, allowed staff to assist more students effectively, and encouraged students to formulate their questions more thoughtfully. Feedback was overwhelmingly positive, with 80% of users—both students and staff—expressing their desire to continue using the application. For this project, my team used React, Java Spring Boot, and MongoDB</div>
-            </div>
-          </div>
-          
-          <div class="exp-card">
-            <img src="./assets/images/clothsim.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Cloth Simulation</div>
-              <div class="body-text exp-card-text">This project explores the physics-based simulation of cloth and its interaction with other objects and gravity, alongside the implementation of custom shaders for realistic rendering. The project begins with creating a mass-spring system that forms the cloth structure, connecting points with springs of different types—structural, shearing, and bending. Various physical properties such as spring constant (ks), density, and damping are tested to observe their effects on cloth behavior.
-                Next, the simulation incorporates collision handling with other objects like spheres and planes, adjusting the cloth's response based on its interaction with these surfaces. The implementation also includes self-collision detection, where a spatial map is used to prevent the cloth from intersecting with itself, enhancing realism.</div>
-            </div>
-          </div>
-
-          <div class="exp-card">
-            <img src="./assets/images/rasterizer.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Rasterizer</div>
-              <div class="body-text exp-card-text">In this project, I implemented various sampling techniques to create a rasterizer that processes SVG files and adjusts how images are projected on the screen. The project involved several tasks, beginning with rasterizing single-color triangles using basic sampling, where I encountered and resolved issues with boundary conditions and speed optimization. I then implemented antialiasing through supersampling, enhancing image quality by averaging multiple sample points within each pixel. This required modifying the sample buffer and resolving issues with indexing and resizing.
-                Next, I worked on geometric transformations, including translation, scaling, and rotation, ensuring the correct application of these transformations to 2D objects. I also applied barycentric coordinates for smooth color interpolation across triangles, which significantly improved visual transitions in the rendered images.
-                For texture mapping, I implemented pixel sampling methods, including nearest neighbor and bilinear interpolation, to determine pixel colors within textured triangles. This required understanding and applying texture coordinates, leading to smoother and more accurate texture representations. I also explored level sampling with mipmaps, optimizing texture detail based on screen resolution, and implemented both nearest and linear level sampling techniques.</div>
-            </div>
-          </div>
-
-          <div class="exp-card">
-            <img src="./assets/images/ray.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Ray Tracing and Global Illumination in 3D Rendering</div>
-              <div class="body-text exp-card-text">This project involves rendering 3D models and lighting, focusing on ray generation, scene intersection, and various illumination techniques.
-                In Part 1, we simulate a camera by generating rays that are used to detect intersections with objects in a scene. We implement ray-triangle and ray-sphere intersection functions using the Moller-Trumbore algorithm for efficient detection.
-                Part 2 introduces the Bounding Volume Hierarchy (BVH) to optimize rendering by reducing the runtime complexity from O(N) to O(log N). We construct a BVH tree using a spatial median heuristic and implement intersection detection with bounding boxes and BVHs. The BVH significantly improves rendering speed, especially for complex scenes.
-                Part 3 focuses on direct illumination, where we implement hemisphere and importance sampling techniques. Importance sampling is found to produce less noise and better shadow quality compared to hemisphere sampling.
-                In Part 4, we explore global illumination using the Russian Roulette technique and recursive ray tracing to simulate multiple light bounces. We analyze the impact of varying bounce counts on the rendered images, noting that beyond a certain number of bounces, additional light contributions become negligible.
-                Finally, Part 5 introduces adaptive sampling to reduce noise in Monte Carlo path tracing. By dynamically adjusting the number of samples based on the scene’s importance, we achieve better image quality without excessively increasing the number of samples.
-                </div>
-            </div>
-          </div>
-          
-          <div class="exp-card">
-            <img src="./assets/images/3d.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Advanced 3D Graphics and Surface Rendering</div>
-              <div class="body-text exp-card-text">In this project, I explored the implementation of curves and surfaces using various algorithms and techniques within a graphic renderer and 3D rasterizer. I began with Bézier curves, utilizing the de Casteljau Subdivision Algorithm to smooth out lines and generate curves. This involved implementing the BezierCurve::evaluateStep() function to iteratively create smooth Bézier curves. I extended this to Bézier surfaces using the Separable 1D de Casteljau method, modifying BezierPatch functions to evaluate 3D surfaces and render complex models like teapots and cubes.
-                Next, I focused on shading techniques, specifically Phong shading, by implementing area-weighted vertex normals. This required modifying the Vertex::normal() function to calculate smooth normals across surfaces, significantly improving the visual quality of the rendered models.
-                I then implemented edge operations such as edge flipping and splitting, which involved modifying HalfedgeMesh::flipEdge() and HalfedgeMesh::splitEdge() functions. These operations allowed me to manipulate mesh structures, creating new triangles and altering existing ones to refine the model's geometry.
-                Finally, I implemented Loop Subdivision for mesh upsampling in the MeshResampler::upsample function. This technique involved iterating through mesh vertices and edges, calculating new positions, and refining the mesh's resolution. The result was smoother, more detailed models with improved geometric accuracy. I also explored pre-processing techniques to maintain symmetry during subdivision, which helped preserve the original shape's integrity.</div>
-            </div>
-          </div>
-
-          
-
-          <div class="exp-card">
-            <img src="./assets/images/antbee.png" class="exp-image">
-            <div class="exp-card-text-container">
-              <div class="subheader-text project-title">Ants vs Bees</div>
-              <div class="body-text exp-card-text">In the "Ants vs. SomeBees" project, I developed a tower defense game inspired by Plants vs. Zombies using object-oriented programming principles. The game centers around strategically placing different types of ants to defend a colony from invading bees. The project was an application of concepts from Composing Programs, particularly focusing on object-oriented design, inheritance, and encapsulation.
-The project was divided into three phases. In Phase 1, I implemented basic gameplay, introducing two main ant types: HarvesterAnt, which collects food, and ThrowerAnt, which attacks bees. Phase 2 added complexity with specialized ants like LongThrower and ShortThrower, each with unique attack ranges. I also implemented defensive ants such as FireAnt, which deals damage when attacked, and WallAnt, which serves as a barrier. Additionally, I developed more complex mechanics, such as the HungryAnt that eats bees whole and the BodyguardAnt that protects other ants.
-In Phase 3, I introduced new environmental elements, including water, which only certain ants could survive, and the QueenAnt, which doubles the damage of all ants behind her. This phase required significant modification and extension of core classes like Ant, Bee, Place, and GameState. I ensured that the game logic was sound and thoroughly tested using both the provided autograder and interactive gameplay.</div>
-            </div>
-          </div>
-
         </div>
-        <!-- <div class="projects-container">
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="./assets/final_project_result/part5_3.png" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">AR & Computer Vision</h4>
+              <p class="project-text">Facial keypoint detection, 3D point propagation, and light field camera effects using CNNs.</p>
+              <a class="button" href="./project-pages/final_project.html">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/diffusion_result/partB/classunet20.gif" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">Diffusion Models</h4>
+              <p class="project-text">Implemented diffusion models for image generation and manipulation using DeepFloyd.</p>
+              <a class="button" href="./project-pages/diffusion.html">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/mosiac_result/part1_landscape1part1_landscape2part1_landscape3mosaic.png" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">Image Mosaics</h4>
+              <p class="project-text">Created seamless image mosaics using homographies and feature-based matching.</p>
+              <a class="button" href="./project-pages/mosaic_project.html">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/face_morph_result/part3me_ran_sequence.gif" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">Face Morphing</h4>
+              <p class="project-text">Created face morphing sequences and caricatures using image processing techniques.</p>
+              <a class="button" href="./project-pages/morph_project.html">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/filter_freq_result/appleorange_blend_4.png" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">Filters & Frequencies</h4>
+              <p class="project-text">Explored Gaussian filters, frequency-based operations, and hybrid images.</p>
+              <a class="button" href="./project-pages/filters_freq_project.html">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/colorizing_result/Pyramid SSD Gradient Cropping emir.png" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">Image Colorization</h4>
+              <p class="project-text">Restored historical images by aligning and combining color channels.</p>
+              <a class="button" href="./project-pages/colorize_project.html">View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/images/vrgame.jpg" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">VR Archery Game</h4>
+              <p class="project-text">Developed immersive VR game using Unity and Meta Quest 3 with hand tracking.</p>
+            </div>
+          </div>
 
           <div class="project-card">
             <img src="./assets/images/smokesim.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Smoke Simulator</div>
-            
+            <div class="project-content">
+              <h4 class="project-title">Smoke Simulator</h4>
+              <p class="project-text">Created a 3D smoke simulation using Three.js and Navier-Stokes equations.</p>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
 
           <div class="project-card">
             <img src="./assets/images/BearQueue.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">BearQueue</div>
+            <div class="project-content">
+              <h4 class="project-title">BearQueue</h4>
+              <p class="project-text">Developed a web application to streamline office hours at UC Berkeley.</p>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
 
           <div class="project-card">
             <img src="./assets/images/clothsim.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Cloth Simulator</div>
+            <div class="project-content">
+              <h4 class="project-title">Cloth Simulation</h4>
+              <p class="project-text">Implemented physics-based cloth simulation with collision handling.</p>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
+
           <div class="project-card">
             <img src="./assets/images/rasterizer.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Rasterizer</div>
+            <div class="project-content">
+              <h4 class="project-title">Rasterizer</h4>
+              <p class="project-text">Built a rasterizer with sampling techniques and texture mapping.</p>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
-          <div class="project-card">
-            <img src="./assets/images/3d.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">3d Model Renderer</div>
-            </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
-          </div>
-          
 
           <div class="project-card">
             <img src="./assets/images/ray.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">3D Light Renderer</div>
+            <div class="project-content">
+              <h4 class="project-title">Ray Tracing</h4>
+              <p class="project-text">Implemented ray tracing with global illumination and adaptive sampling.</p>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
+          </div>
+
+          <div class="project-card">
+            <img src="./assets/images/3d.png" class="project-image">
+            <div class="project-content">
+              <h4 class="project-title">3D Graphics</h4>
+              <p class="project-text">Developed advanced 3D graphics with Bézier curves and surface rendering.</p>
+            </div>
           </div>
 
           <div class="project-card">
             <img src="./assets/images/antbee.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Ants vs Bees</div>
+            <div class="project-content">
+              <h4 class="project-title">Ants vs Bees</h4>
+              <p class="project-text">Created a tower defense game using object-oriented programming.</p>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
-          
-        </div> -->
-      </div>
+        </div>
+      </section>
     </div>
 
     <!-- FOOTER -->
-    <div id="footer">
-      <!-- 
-        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
-
-        This should be the same across all pages.
-      -->
-      <a class="icon-link" target="_blank" href="https://www.instagram.com/matthew__park/">
-        <image src="./assets/icons/instagram.svg" class="footer-icon"/>
-      </a>
-      <!-- 
-        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
-      
-        This should be the same across all pages.
-      -->
-      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/seonghyun-park-704957237/">
-        <image src="./assets/icons/linkedin-app-icon.svg" class="footer-icon"/>
-      </a>
-      <!-- 
-        TODO - Change the email after "mailto" to your contact email 
-      
-        This should be the same across all pages.
-      -->
-      <a class="icon-link" target="_blank" href="https://github.com/spark0615">
-        <image src="./assets/icons/icons8-github.svg" class="footer-icon"/>
-      </a>
-      <a class="icon-link" href="mailto:spark6015@berkeley.edu">
-        <image src="./assets/icons/mail.svg" class="footer-icon"/>
-      </a>
-    </div>
-
+    <footer id="footer">
+      <div class="social-links">
+        <a class="icon-link" target="_blank" href="https://www.instagram.com/matthew__park/">
+          <image src="./assets/icons/instagram.svg" class="footer-icon"/>
+        </a>
+        <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/seonghyun-park-704957237/">
+          <image src="./assets/icons/linkedin-app-icon.svg" class="footer-icon"/>
+        </a>
+        <a class="icon-link" target="_blank" href="https://github.com/spark0615">
+          <image src="./assets/icons/icons8-github.svg" class="footer-icon"/>
+        </a>
+        <a class="icon-link" href="mailto:spark6015@berkeley.edu">
+          <image src="./assets/icons/mail.svg" class="footer-icon"/>
+        </a>
+      </div>
+    </footer>
 	</body>
 </html>
