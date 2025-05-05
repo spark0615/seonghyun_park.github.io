@@ -1,5 +1,7 @@
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
 }
 
 .nav-title {
@@ -18,17 +20,23 @@ body {
 }
 
 .main-title {
-  font-size: 35px;
+  font-size: 3.5rem;
   font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
+
 .main-sub-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 .subheader-text {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 .subsubheader-text {
@@ -37,8 +45,10 @@ body {
 }
 
 .subtitleheader-text {
-  font-size: 17px;
-  font-weight: 550;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 0.5rem;
 }
 
 .math-equation {
@@ -57,8 +67,9 @@ body {
 }
 
 .body-text {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
 }
 
 .project-card-text {
@@ -70,17 +81,15 @@ body {
 }
 
 .exp-card-text {
-  text-overflow: ellipsis;
-  max-width: calc(100% ); /* Ensure text container doesn't overlap with the image */
-  word-wrap: break-word; 
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
 }
 
 .project-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .project-subtitle {
@@ -102,6 +111,17 @@ body {
   #main-content {
     margin: 225px 75px;
   }
+  .main-title {
+    font-size: 3rem;
+  }
+  
+  .main-sub-title {
+    font-size: 1.6rem;
+  }
+  
+  .subheader-text {
+    font-size: 1.8rem;
+  }
 }
 
 /* Large devices (laptops/desktops, 1000px and below) */
@@ -114,16 +134,54 @@ body {
 
 /* Small devices (portrait tablets and large phones, 800px and below) */
 @media only screen and (max-width: 800px) {
-  .project-title {
-    font-size: 15px;
-    margin-bottom: 15px;
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .main-sub-title {
+    font-size: 1.4rem;
+  }
+  
+  .subheader-text {
+    font-size: 1.6rem;
+  }
+  
+  .subtitleheader-text {
+    font-size: 1.2rem;
+  }
+  
+  .body-text {
+    font-size: 1rem;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and below) */
 @media only screen and (max-width: 600px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .main-sub-title {
+    font-size: 1.2rem;
+  }
+  
+  .subheader-text {
+    font-size: 1.4rem;
+  }
+  
+  .subtitleheader-text {
+    font-size: 1.1rem;
+  }
+  
+  .body-text {
+    font-size: 0.95rem;
+  }
+  
   .project-title {
-    font-size: 15px;
-    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+  
+  .exp-card-text {
+    font-size: 0.95rem;
   }
 }

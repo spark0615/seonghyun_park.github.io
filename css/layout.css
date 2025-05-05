@@ -146,26 +146,28 @@ body {
     
     .exp-card {
       display: flex;
-      flex-direction: row; /* Change from column to row */
-      gap: 40px; /* Adjust gap between image and text */
-      width: 100%; /* Make sure the card takes up the full width */
-      
-      margin-bottom: 16px
+      flex-direction: row;
+      gap: 40px;
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .exp-image {
-      width: 200px; /* Fixed width for the image */
+      width: 200px;
       height: 200px;
       object-fit: cover;
       object-position: center;
+      border-radius: 4px;
     }
     
     .exp-card-text-container {
-      flex-grow: 1; /* Allow the text container to take up remaining space */
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
-      
-      /* word-wrap: break-word; */
       gap: 10px;
     }
 
@@ -293,43 +295,135 @@ body {
 /* Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1200px) {
   #main-content {
-    margin: 225px 75px;
+    margin: 120px 80px;
   }
 }
 
 /* Large devices (laptops/desktops, 1000px and below) */
 @media only screen and (max-width: 1000px) {
   #main-content {
-    margin: 225px 35px;
+    margin: 100px 60px;
+  }
+  
+  .exp-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .exp-image {
+    width: 100%;
+    max-width: 300px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 800px and below) */
 @media only screen and (max-width: 800px) {
   #main-content {
-    margin: 150px 30px;
+    margin: 80px 40px;
   }
-
+  
   #portfolio-header {
     flex-direction: column;
+    text-align: center;
+  }
+  
+  #portfolio-header-image-container {
+    flex-basis: 100%;
+    align-items: center;
+  }
+  
+  .portfolio-header-image {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  #portfolio-header-text-container {
+    flex-basis: 100%;
+    align-items: center;
   }
 
   .project-card {
     max-width: calc((100% - 16px) / 2);
   }
-
-  
 }
 
 /* Small devices (portrait tablets and large phones, 600px and below) */
 @media only screen and (max-width: 600px) {
   #main-content {
-    margin: 125px 20px;
+    margin: 60px 20px;
+    gap: 48px;
+  }
+  
+  .exp-card {
+    padding: 15px;
+  }
+  
+  .exp-image {
+    height: 180px;
+  }
+  
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navbar {
+    padding: 10px 20px;
+  }
+  
+  .nav-title {
+    font-size: 1.2em;
   }
 
   .project-card {
     max-width: 100%;
   }
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.nav-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #0056b3;
+}
+
+.right-arrow-icon {
+  width: 16px;
+  height: 16px;
 }
 
 
