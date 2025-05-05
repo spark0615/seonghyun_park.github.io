@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#000000"/>
+  
+  <!-- 3D Triangle -->
+  <path d="M100 40 L160 140 L40 140 Z" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Inner Triangle (for 3D effect) -->
+  <path d="M100 60 L140 130 L60 130 Z" fill="#ffffff" stroke="#ffffff" stroke-width="1"/>
+  
+  <!-- Highlight -->
+  <path d="M100 40 L120 90 L100 60 Z" fill="#ffffff" opacity="0.3"/>
+</svg> 
